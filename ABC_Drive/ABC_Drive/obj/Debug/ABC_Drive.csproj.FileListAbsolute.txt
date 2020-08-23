@@ -24,7 +24,6 @@ F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculati
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\EntityFramework.SqlServer.dll
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\EntityFramework.xml
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\EntityFramework.SqlServer.xml
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csprojAssemblyReference.cache
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Driver.frmDriver.resources
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.CreatDb.resources
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.UpdateDb2.resources
@@ -36,3 +35,5 @@ F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculati
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csproj.CopyComplete
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.exe
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.pdb
+F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csprojAssemblyReference.cache
+F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.UpdateLicence.resources
