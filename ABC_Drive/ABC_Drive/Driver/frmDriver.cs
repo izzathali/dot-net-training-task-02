@@ -15,9 +15,12 @@ namespace ABC_Drive.Driver
     {
         Model.Driver model = new Model.Driver();
         RentDbContext db = new RentDbContext();
-        public frmDriver()
+
+        private readonly Action _dataUpdate;
+        public frmDriver(Action dataUpdate)
         {
             InitializeComponent();
+            _dataUpdate = dataUpdate;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -30,23 +33,45 @@ namespace ABC_Drive.Driver
             {
                 MessageBox.Show("Please type a Driver Cost per day");
             }
+            else if (cmbLicence.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Licence type");
+            }
             else
             {
-                Model.Driver model = new Model.Driver()
+                if (db.Drivers.Any(p => p.DriverName == txtDriverName.Text))
                 {
-                    DriverName = txtDriverName.Text,
-                    DriverCost = Convert.ToInt32(txtDriverCost.Text)
-                };
-                db.Drivers.Add(model);
-                db.SaveChanges();
-                MessageBox.Show("Driver Details Saccessfully Saved");
-                this.Close();
+                    MessageBox.Show("This Driver Name already Recorded. Please type Unique Driver Name...");
+                }
+                else
+                {
+                    Model.Driver model = new Model.Driver()
+                    {
+                        DriverName = txtDriverName.Text,
+                        DriverCost = Convert.ToInt32(txtDriverCost.Text),
+                        LicenceType = cmbLicence.SelectedText
+                    };
+                    db.Drivers.Add(model);
+                    db.SaveChanges();
+                    MessageBox.Show("Driver Details Saccessfully Saved");
+                    _dataUpdate();
+                    this.Close();
+                }
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmDriver_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void LoadCmbLicenceType()
+        {
+            
         }
     }
 }

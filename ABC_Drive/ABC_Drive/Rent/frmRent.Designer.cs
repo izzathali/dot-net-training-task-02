@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddDriver = new System.Windows.Forms.Button();
             this.btnAddVehicle = new System.Windows.Forms.Button();
-            this.rbDriverNo = new System.Windows.Forms.RadioButton();
-            this.rbDriverYes = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
             this.dtpReturnedDate = new System.Windows.Forms.DateTimePicker();
             this.dtpRentedDate = new System.Windows.Forms.DateTimePicker();
@@ -58,7 +57,9 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.dgvVehicleList = new System.Windows.Forms.DataGridView();
-            this.btnAddDriver = new System.Windows.Forms.Button();
+            this.rbDriverYes = new System.Windows.Forms.RadioButton();
+            this.rbDriverNo = new System.Windows.Forms.RadioButton();
+            this.cmbLoadDriver = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -69,6 +70,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel1.Controls.Add(this.cmbLoadDriver);
             this.panel1.Controls.Add(this.btnAddDriver);
             this.panel1.Controls.Add(this.btnAddVehicle);
             this.panel1.Controls.Add(this.rbDriverNo);
@@ -87,6 +89,19 @@
             this.panel1.Size = new System.Drawing.Size(692, 195);
             this.panel1.TabIndex = 0;
             // 
+            // btnAddDriver
+            // 
+            this.btnAddDriver.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnAddDriver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddDriver.Location = new System.Drawing.Point(633, 143);
+            this.btnAddDriver.Name = "btnAddDriver";
+            this.btnAddDriver.Size = new System.Drawing.Size(27, 29);
+            this.btnAddDriver.TabIndex = 8;
+            this.btnAddDriver.Text = "+";
+            this.btnAddDriver.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAddDriver.UseVisualStyleBackColor = true;
+            this.btnAddDriver.Click += new System.EventHandler(this.btnAddDriver_Click);
+            // 
             // btnAddVehicle
             // 
             this.btnAddVehicle.Cursor = System.Windows.Forms.Cursors.Default;
@@ -94,37 +109,11 @@
             this.btnAddVehicle.Location = new System.Drawing.Point(238, 61);
             this.btnAddVehicle.Name = "btnAddVehicle";
             this.btnAddVehicle.Size = new System.Drawing.Size(32, 27);
-            this.btnAddVehicle.TabIndex = 12;
+            this.btnAddVehicle.TabIndex = 2;
             this.btnAddVehicle.Text = "+";
             this.btnAddVehicle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAddVehicle.UseVisualStyleBackColor = true;
             this.btnAddVehicle.Click += new System.EventHandler(this.btnAddVehicle_Click);
-            // 
-            // rbDriverNo
-            // 
-            this.rbDriverNo.AutoSize = true;
-            this.rbDriverNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDriverNo.Location = new System.Drawing.Point(530, 152);
-            this.rbDriverNo.Name = "rbDriverNo";
-            this.rbDriverNo.Size = new System.Drawing.Size(46, 22);
-            this.rbDriverNo.TabIndex = 11;
-            this.rbDriverNo.TabStop = true;
-            this.rbDriverNo.Text = "No";
-            this.rbDriverNo.UseVisualStyleBackColor = true;
-            this.rbDriverNo.CheckedChanged += new System.EventHandler(this.rbDriverNo_CheckedChanged);
-            // 
-            // rbDriverYes
-            // 
-            this.rbDriverYes.AutoSize = true;
-            this.rbDriverYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDriverYes.Location = new System.Drawing.Point(472, 152);
-            this.rbDriverYes.Name = "rbDriverYes";
-            this.rbDriverYes.Size = new System.Drawing.Size(51, 22);
-            this.rbDriverYes.TabIndex = 10;
-            this.rbDriverYes.TabStop = true;
-            this.rbDriverYes.Text = "Yes";
-            this.rbDriverYes.UseVisualStyleBackColor = true;
-            this.rbDriverYes.CheckedChanged += new System.EventHandler(this.rbDriverYes_CheckedChanged);
             // 
             // label7
             // 
@@ -143,7 +132,7 @@
             this.dtpReturnedDate.Name = "dtpReturnedDate";
             this.dtpReturnedDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtpReturnedDate.Size = new System.Drawing.Size(129, 26);
-            this.dtpReturnedDate.TabIndex = 8;
+            this.dtpReturnedDate.TabIndex = 4;
             this.dtpReturnedDate.ValueChanged += new System.EventHandler(this.dtpReturnedDate_ValueChanged);
             // 
             // dtpRentedDate
@@ -153,7 +142,7 @@
             this.dtpRentedDate.Location = new System.Drawing.Point(102, 146);
             this.dtpRentedDate.Name = "dtpRentedDate";
             this.dtpRentedDate.Size = new System.Drawing.Size(129, 26);
-            this.dtpRentedDate.TabIndex = 7;
+            this.dtpRentedDate.TabIndex = 3;
             this.dtpRentedDate.ValueChanged += new System.EventHandler(this.dtpRentedDate_ValueChanged);
             // 
             // label2
@@ -172,7 +161,7 @@
             this.txtVehicleNo.Location = new System.Drawing.Point(53, 62);
             this.txtVehicleNo.Name = "txtVehicleNo";
             this.txtVehicleNo.Size = new System.Drawing.Size(184, 26);
-            this.txtVehicleNo.TabIndex = 4;
+            this.txtVehicleNo.TabIndex = 1;
             this.txtVehicleNo.TextChanged += new System.EventHandler(this.txtVehicleNo_TextChanged);
             this.txtVehicleNo.Leave += new System.EventHandler(this.txtVehicleNo_Leave);
             // 
@@ -372,7 +361,7 @@
             this.btnCancel.Location = new System.Drawing.Point(423, 29);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 30);
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -381,7 +370,7 @@
             this.btnSave.Location = new System.Drawing.Point(544, 29);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(109, 30);
-            this.btnSave.TabIndex = 8;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -404,18 +393,41 @@
             this.dgvVehicleList.Visible = false;
             this.dgvVehicleList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVehicleList_CellClick);
             // 
-            // btnAddDriver
+            // rbDriverYes
             // 
-            this.btnAddDriver.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnAddDriver.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddDriver.Location = new System.Drawing.Point(525, 113);
-            this.btnAddDriver.Name = "btnAddDriver";
-            this.btnAddDriver.Size = new System.Drawing.Size(25, 23);
-            this.btnAddDriver.TabIndex = 13;
-            this.btnAddDriver.Text = "+";
-            this.btnAddDriver.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAddDriver.UseVisualStyleBackColor = true;
-            this.btnAddDriver.Click += new System.EventHandler(this.btnAddDriver_Click);
+            this.rbDriverYes.AutoSize = true;
+            this.rbDriverYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDriverYes.Location = new System.Drawing.Point(552, 115);
+            this.rbDriverYes.Name = "rbDriverYes";
+            this.rbDriverYes.Size = new System.Drawing.Size(51, 22);
+            this.rbDriverYes.TabIndex = 6;
+            this.rbDriverYes.TabStop = true;
+            this.rbDriverYes.Text = "Yes";
+            this.rbDriverYes.UseVisualStyleBackColor = true;
+            this.rbDriverYes.CheckedChanged += new System.EventHandler(this.rbDriverYes_CheckedChanged);
+            this.rbDriverYes.Click += new System.EventHandler(this.rbDriverYes_Click);
+            // 
+            // rbDriverNo
+            // 
+            this.rbDriverNo.AutoSize = true;
+            this.rbDriverNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDriverNo.Location = new System.Drawing.Point(609, 115);
+            this.rbDriverNo.Name = "rbDriverNo";
+            this.rbDriverNo.Size = new System.Drawing.Size(46, 22);
+            this.rbDriverNo.TabIndex = 5;
+            this.rbDriverNo.TabStop = true;
+            this.rbDriverNo.Text = "No";
+            this.rbDriverNo.UseVisualStyleBackColor = true;
+            this.rbDriverNo.CheckedChanged += new System.EventHandler(this.rbDriverNo_CheckedChanged);
+            // 
+            // cmbLoadDriver
+            // 
+            this.cmbLoadDriver.FormattingEnabled = true;
+            this.cmbLoadDriver.Location = new System.Drawing.Point(472, 144);
+            this.cmbLoadDriver.Name = "cmbLoadDriver";
+            this.cmbLoadDriver.Size = new System.Drawing.Size(161, 28);
+            this.cmbLoadDriver.TabIndex = 7;
+            this.cmbLoadDriver.SelectedIndexChanged += new System.EventHandler(this.cmbLoadDriver_SelectedIndexChanged);
             // 
             // frmRent
             // 
@@ -464,8 +476,6 @@
         private System.Windows.Forms.DateTimePicker dtpRentedDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RadioButton rbDriverNo;
-        private System.Windows.Forms.RadioButton rbDriverYes;
         private System.Windows.Forms.Button btnAddVehicle;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTotDriverCost;
@@ -476,5 +486,8 @@
         private System.Windows.Forms.Label lblTotDays;
         private System.Windows.Forms.DataGridView dgvVehicleList;
         private System.Windows.Forms.Button btnAddDriver;
+        private System.Windows.Forms.ComboBox cmbLoadDriver;
+        private System.Windows.Forms.RadioButton rbDriverNo;
+        private System.Windows.Forms.RadioButton rbDriverYes;
     }
 }

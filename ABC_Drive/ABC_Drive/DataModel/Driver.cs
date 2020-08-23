@@ -14,6 +14,7 @@ namespace ABC_Drive.Model
         public int Id { get; set; }
         [Required]
         public string DriverName { get; set; }
+        public string LicenceType { get; set; }
         public int DriverCost { get; set; }
 
         public ICollection<Rent> Rents { get; set; }

@@ -19,8 +19,9 @@ namespace ABC_Drive.Rent
         
         RentDbContext db = new RentDbContext();
         Model.Rent model = new Model.Rent();
-        int VehicleID;
-
+        private int VehicleID { get; set; }
+        //int VehicleID;
+        
         public frmRent()
         {
             InitializeComponent();
@@ -31,13 +32,27 @@ namespace ABC_Drive.Rent
             dtpRentedDate.CustomFormat = "dd-MM-yyyy";
             dtpReturnedDate.CustomFormat = "dd-MM-yyyy";
             rbDriverNo.Checked = true;
+            LoadCmbDriver();
         }
+
+        private void LoadCmbDriver()
+        {
+            var Drv = from Driver in db.Drivers select Driver;
+
+            cmbLoadDriver.DataSource = Drv.ToList();
+            cmbLoadDriver.DisplayMember = "DriverName";
+            cmbLoadDriver.ValueMember = "Id";
+            cmbLoadDriver.SelectedIndex = -1;
+        }
+
         private void RentCalculation()
         {
             double Days = 0;
             DateTime RentedDate = dtpRentedDate.Value;
             DateTime ReturnedDate = dtpReturnedDate.Value;
             bool driver = rbDriverYes.Checked;
+
+            
 
             TimeSpan CountDays = ReturnedDate - RentedDate;
             Days = CountDays.TotalDays;
@@ -46,7 +61,8 @@ namespace ABC_Drive.Rent
             var RatePerWeek = db.Vehicles.Where(x => x.VehicleId == VehicleID).Select(u => u.RatePerWeek).FirstOrDefault();
             var RatePerMonth = db.Vehicles.Where(x => x.VehicleId == VehicleID).Select(u => u.RatePerMonth).FirstOrDefault();
 
-            var DriverRatePerDay = db.Drivers.Where(x => x.Id== 1).Select(u => u.DriverCost).FirstOrDefault();
+            //var DrvId = db.Drivers.Where(x => x.DriverName == cmbLoadDriver.SelectedText).Select(u => u.Id).FirstOrDefault();
+            var DriverRatePerDay = db.Drivers.Where(x => x.DriverName ==  cmbLoadDriver.Text).Select(u => u.DriverCost).FirstOrDefault();
 
             int Weeks = 0;
             int Months = 0;
@@ -61,8 +77,8 @@ namespace ABC_Drive.Rent
             float TotalRent = 0;
 
             //lblTotDays.Text = Convert.ToInt32(Days).ToString();
-
-            if (Days > 7)
+            //if (Days >= 7)
+            if (Days > 6)
             {
                 if (Days > 30)
                 {
@@ -195,25 +211,14 @@ namespace ABC_Drive.Rent
 
         private void rbDriverYes_CheckedChanged(object sender, EventArgs e)
         {
-            if (txtVehicleNo.Text == String.Empty)
-            {
-                MessageBox.Show("Please type a Vehicle No first.");
-                txtVehicleNo.Focus();
-            }
-            else if (db.Vehicles.Any(p => p.VehicleId != VehicleID))
-            {
-                MessageBox.Show("Please type Valid Vehicle No");
-                txtVehicleNo.Focus();
-            }
-            else
-            {
-                RentCalculation();
-            }
+            
         }
 
         private void rbDriverNo_CheckedChanged(object sender, EventArgs e)
         {
-            
+            cmbLoadDriver.Enabled = false;
+            btnAddDriver.Enabled = false;
+            cmbLoadDriver.SelectedIndex = -1;
         }
 
         private void btnAddVehicle_Click(object sender, EventArgs e)
@@ -230,20 +235,39 @@ namespace ABC_Drive.Rent
 
         private void txtVehicleNo_Leave(object sender, EventArgs e)
         {
-            /*
+            VehicleNoLoad();
+        }
+        
+        private void VehicleNoLoad()
+        {
             if (txtVehicleNo.Text != String.Empty)
             {
-                if (db.Vehicles.Any(p => p.VehicleId != VehicleID))
+                if (db.Vehicles.Any(p => p.VehicleNo == txtVehicleNo.Text))
                 {
-                    MessageBox.Show("Please type Valid Vehicle No");
-                    txtVehicleNo.Focus();
+                    var vehic = db.Vehicles.Where(x => x.VehicleNo == txtVehicleNo.Text).Select(u => u.VehicleId).FirstOrDefault();
+                    VehicleID = vehic;
+                    dgvVehicleList.Visible = false;
                 }
                 else
                 {
-                    RentCalculation();
+                    VehicleID = 0;
                 }
-            }*/
-            
+            }
+        }
+        private void ClearText()
+        {
+            dtpRentedDate.Value = DateTime.Today;
+            dtpReturnedDate.Value = DateTime.Today;
+            rbDriverNo.Checked = true;
+            lblTotDays.Text = "0";
+            lblTotWeeks.Text = "0";
+            lblTotMonths.Text = "0";
+            txtTotDaysAmnt.Text = String.Empty;
+            txtTotWeeksAmnt.Text = String.Empty;
+            txtTotMonthsAmnt.Text = String.Empty;
+            lblTotDriverCost.Text = "0";
+            lblTotRent.Text = "0";
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -253,7 +277,7 @@ namespace ABC_Drive.Rent
 
         private void btnAddDriver_Click(object sender, EventArgs e)
         {
-            frmDriver frmD = new frmDriver();
+            frmDriver frmD = new frmDriver(this.LoadCmbDriver);
             using (frmD)
             {
                 if (frmD.ShowDialog() == DialogResult.OK)
@@ -261,6 +285,33 @@ namespace ABC_Drive.Rent
 
                 }
             }
+        }
+
+        private void rbDriverYes_Click(object sender, EventArgs e)
+        {
+            if (txtVehicleNo.Text == String.Empty)
+            {
+                MessageBox.Show("Please type a Vehicle No first.");
+                rbDriverNo.Checked = true;
+                txtVehicleNo.Focus();
+            }
+            else if (db.Vehicles.Any(p => p.VehicleId != VehicleID))
+            {
+                MessageBox.Show("Please type Valid Vehicle No");
+                rbDriverNo.Checked = true;
+                txtVehicleNo.Focus();
+            }
+            else
+            {
+                cmbLoadDriver.Enabled = true;
+                btnAddDriver.Enabled = true;
+                //RentCalculation();
+            }
+        }
+
+        private void cmbLoadDriver_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             RentCalculation();
         }
     }
 }
