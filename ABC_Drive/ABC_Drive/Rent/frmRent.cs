@@ -215,10 +215,13 @@ namespace ABC_Drive.Rent
         {
             
         }
+        private void LoadVehicle()
+        {
 
+        }
         private void btnAddVehicle_Click(object sender, EventArgs e)
         {
-            frmVehicle frmV = new frmVehicle();
+            frmVehicle frmV = new frmVehicle(this.LoadVehicle);
             using (frmV)
             {
                 if (frmV.ShowDialog() == DialogResult.OK)
