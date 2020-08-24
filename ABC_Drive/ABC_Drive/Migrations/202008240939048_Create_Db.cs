@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreatDb : DbMigration
+    public partial class Create_Db : DbMigration
     {
         public override void Up()
         {
@@ -13,6 +13,7 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         DriverName = c.String(nullable: false),
+                        LicenceType = c.String(),
                         DriverCost = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -31,36 +32,36 @@
                         TotMonthsAmnt = c.Int(nullable: false),
                         TotalRent = c.Single(nullable: false),
                         Driver_Id = c.Int(),
-                        Vechicle_VechicleId = c.Int(nullable: false),
+                        Vehicle_VehicleId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.RentId)
                 .ForeignKey("dbo.Drivers", t => t.Driver_Id)
-                .ForeignKey("dbo.Vechicles", t => t.Vechicle_VechicleId, cascadeDelete: true)
+                .ForeignKey("dbo.Vehicles", t => t.Vehicle_VehicleId, cascadeDelete: true)
                 .Index(t => t.Driver_Id)
-                .Index(t => t.Vechicle_VechicleId);
+                .Index(t => t.Vehicle_VehicleId);
             
             CreateTable(
-                "dbo.Vechicles",
+                "dbo.Vehicles",
                 c => new
                     {
-                        VechicleId = c.Int(nullable: false, identity: true),
-                        VechicleNo = c.String(nullable: false),
-                        VechicleName = c.String(nullable: false),
+                        VehicleId = c.Int(nullable: false, identity: true),
+                        VehicleNo = c.String(nullable: false),
+                        VehicleName = c.String(nullable: false),
                         RatePerDay = c.Int(nullable: false),
                         RatePerWeek = c.Int(nullable: false),
                         RatePerMonth = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.VechicleId);
+                .PrimaryKey(t => t.VehicleId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Rents", "Vechicle_VechicleId", "dbo.Vechicles");
+            DropForeignKey("dbo.Rents", "Vehicle_VehicleId", "dbo.Vehicles");
             DropForeignKey("dbo.Rents", "Driver_Id", "dbo.Drivers");
-            DropIndex("dbo.Rents", new[] { "Vechicle_VechicleId" });
+            DropIndex("dbo.Rents", new[] { "Vehicle_VehicleId" });
             DropIndex("dbo.Rents", new[] { "Driver_Id" });
-            DropTable("dbo.Vechicles");
+            DropTable("dbo.Vehicles");
             DropTable("dbo.Rents");
             DropTable("dbo.Drivers");
         }
