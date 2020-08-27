@@ -112,8 +112,38 @@ namespace ABC_Drive.Hire
             }
             LoadcmbVehicle();
         }
-
         private void LongTourHireCalculation()
+        {
+            string _cmbVehicleNo = cmbVehicleNo.Text;
+            string _cmbPackage = cmbPackageName.Text;
+            DateTime _StartDate = dtpStartDate.Value;
+            DateTime _EndDate = dtpEndDate.Value;
+            int _StartKm = (txtStartKm.Text == "") ? 0 : Convert.ToInt32(txtStartKm.Text);
+            int _EndKm = (txtEndKm.Text == "") ? 0 : Convert.ToInt32(txtEndKm.Text);
+            bool _DriverCked = rbDriverNo.Checked;
+            string _cmbDriverName = cmbDriverName.Text;
+
+            LongTourHireCalculation Cal = new LongTourHireCalculation(_cmbVehicleNo,_cmbPackage,_StartDate,_EndDate,_StartKm,
+                _EndKm,_DriverCked,_cmbDriverName);
+
+            Cal.DurationCalculation();
+            lblDriverOverNight.Text = Cal.TotDriverOverNightRate.ToString();
+            lblVehicleNightPark.Text = Cal.TotVehicleNightPark.ToString();
+            lblOverNightStay.Text = Cal.OverNigths.ToString()+":nts";
+            txtNightStayCharge.Text = Cal.TotNightStayCharge.ToString();
+
+            Cal.KmCalculation();
+            lblExtraKm.Text = Cal.ExtraKm.ToString() + ":km";
+            txtExtraKmCharge.Text = Cal.ExtraRateKms.ToString();
+
+            Cal.PackageStandardRate();
+            txtHireCharge.Text = Cal.PckStandardRate.ToString();
+
+            Cal.TotalHireCalculation();
+            lblTotalHireCharge.Text = Cal.TotalHireCharge.ToString();
+        }
+        /*
+        private void LongTourHireCalculationnn()
         {
             int PckStandardRate = 0;
             int ExtraRateKms = 0;
@@ -186,7 +216,7 @@ namespace ABC_Drive.Hire
             TotalHireCharge = PckStandardRate + TotNightStayCharge + ExtraRateKms;
             lblTotalHireCharge.Text = TotalHireCharge.ToString();
             
-        }
+        }*/
 
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)
         {

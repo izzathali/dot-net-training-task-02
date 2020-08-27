@@ -81,6 +81,7 @@
     <Compile Include="Hire\frmLongHire.Designer.cs">
       <DependentUpon>frmLongHire.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hire\LongTourHireCalculation.cs" />
     <Compile Include="Migrations\202008221411334_CreatDb.cs" />
     <Compile Include="Migrations\202008221411334_CreatDb.designer.cs">
       <DependentUpon>202008221411334_CreatDb.cs</DependentUpon>
