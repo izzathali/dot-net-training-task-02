@@ -16,7 +16,7 @@ namespace ABC_Drive
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Rent.frmRent());
+            Application.Run(new Hire.frmLongHire());
         }
     }
 }

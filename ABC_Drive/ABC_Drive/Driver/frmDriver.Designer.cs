@@ -38,7 +38,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtRatePerOverNight = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -47,7 +50,6 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.cmbLicence);
             this.panel1.Controls.Add(this.txtDriverCost);
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtDriverName);
             this.panel1.Controls.Add(this.label1);
@@ -138,6 +140,22 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // txtRatePerOverNight
+            // 
+            this.txtRatePerOverNight.Location = new System.Drawing.Point(70, 135);
+            this.txtRatePerOverNight.Name = "txtRatePerOverNight";
+            this.txtRatePerOverNight.Size = new System.Drawing.Size(219, 26);
+            this.txtRatePerOverNight.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(65, 106);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(148, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Rate per over night:";
+            // 
             // frmDriver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -156,6 +174,7 @@
             this.Load += new System.EventHandler(this.frmDriver_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

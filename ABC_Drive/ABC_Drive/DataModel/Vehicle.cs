@@ -1,4 +1,5 @@
 ﻿
+using ABC_Drive.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,7 +24,9 @@ namespace ABC_Drive.Model
         public int RatePerWeek { get; set; }
         [Required]
         public int RatePerMonth { get; set; }
-
+        public int RatePerNightPark { get; set; }
         public ICollection<Rent> Rents { get; set; }
+        public ICollection<Package> Packages { get; set; }
+        public ICollection<LongHire> LongHires { get; set; }
     }
 }
