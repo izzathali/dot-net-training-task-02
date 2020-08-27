@@ -30,12 +30,17 @@ namespace ABC_Drive.Driver
             {
                 MessageBox.Show("Please type a Driver Cost per day");
             }
+            else if (txtRatePerOverNight.Text == String.Empty)
+            {
+                MessageBox.Show("Please type a Driver Rate per over night");
+            }
             else
             {
                 Model.Driver model = new Model.Driver()
                 {
                     DriverName = txtDriverName.Text,
-                    DriverCost = Convert.ToInt32(txtDriverCost.Text)
+                    DriverCost = Convert.ToInt32(txtDriverCost.Text),
+                    RatePerOverNight = Convert.ToInt32(txtRatePerOverNight.Text)
                 };
                 db.Drivers.Add(model);
                 db.SaveChanges();

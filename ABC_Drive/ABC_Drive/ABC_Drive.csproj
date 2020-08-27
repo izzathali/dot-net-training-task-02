@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="DataModel\Driver.cs" />
     <Compile Include="DataModel\DayHire.cs" />
+    <Compile Include="DataModel\LongHire.cs" />
     <Compile Include="DataModel\Package.cs" />
     <Compile Include="DataModel\Rent.cs" />
     <Compile Include="Driver\frmDriver.cs">
@@ -74,6 +75,12 @@
     <Compile Include="Hire\frmDayHire.Designer.cs">
       <DependentUpon>frmDayHire.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hire\frmLongHire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hire\frmLongHire.Designer.cs">
+      <DependentUpon>frmLongHire.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202008221411334_CreatDb.cs" />
     <Compile Include="Migrations\202008221411334_CreatDb.designer.cs">
       <DependentUpon>202008221411334_CreatDb.cs</DependentUpon>
@@ -85,6 +92,10 @@
     <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.cs" />
     <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.designer.cs">
       <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008270624395_CreateLongHire.cs" />
+    <Compile Include="Migrations\202008270624395_CreateLongHire.designer.cs">
+      <DependentUpon>202008270624395_CreateLongHire.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Package\frmPackage.cs">
@@ -113,6 +124,9 @@
     <EmbeddedResource Include="Hire\frmDayHire.resx">
       <DependentUpon>frmDayHire.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Hire\frmLongHire.resx">
+      <DependentUpon>frmLongHire.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008221411334_CreatDb.resx">
       <DependentUpon>202008221411334_CreatDb.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008230631192_CreateHire&amp;Package.resx">
       <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008270624395_CreateLongHire.resx">
+      <DependentUpon>202008270624395_CreateLongHire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Package\frmPackage.resx">
       <DependentUpon>frmPackage.cs</DependentUpon>

@@ -15,7 +15,8 @@ namespace ABC_Drive.Model
         [Required]
         public string DriverName { get; set; }
         public int DriverCost { get; set; }
-
+        public int RatePerOverNight { get; set; }
         public ICollection<Rent> Rents { get; set; }
+        public ICollection<LongHire> LongHires { get; set; }
     }
 }
