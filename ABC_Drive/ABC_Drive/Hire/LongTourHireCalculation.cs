@@ -12,28 +12,28 @@ namespace ABC_Drive.Hire
     {
         RentDbContext db = new RentDbContext();
 
-        public int PckStandardRate = 0;
-        public int ExtraRateKms = 0;
-        public int TotDriverOverNightRate = 0;
-        public int TotVehicleNightPark = 0;
-        public int TotNightStayCharge = 0;
-        public int MaxKmLimit = 0;
-        public double Days = 0;
+        private int PckStandardRate = 0;
+        private int ExtraRateKms = 0;
+        private int TotDriverOverNightRate = 0;
+        private int TotVehicleNightPark = 0;
+        private int TotNightStayCharge = 0;
+        private int MaxKmLimit = 0;
+        private double Days = 0;
 
-        public string VehicleNo ="" ;
-        public string PackageName = "";
-        public bool DriverCkedNo = true;
-        public string DriverName = "" ;
+        //private string VehicleNo ="" ;
+        //private string PackageName = "";
+        //private bool DriverCkedNo = true;
+        //private string DriverName = "" ;
 
-        public DateTime StartDate = DateTime.Today;
-        public DateTime EndDate = DateTime.Today;
-        public int StartKm = 0;
-        public int EndKm = 0;
-        public int OverNigths = 0;
-        public int ExtraKm = 0;
+        //private DateTime StartDate = DateTime.Today;
+        //private DateTime EndDate = DateTime.Today;
+        //private int StartKm = 0;
+        //private int EndKm = 0;
+        private int OverNigths = 0;
+        private int ExtraKm = 0;
 
         public int TotalHireCharge = 0;
-
+        /*
         public LongTourHireCalculation(string _cmbVehicleNo, string _cmbPackage, DateTime _StartDate,
             DateTime _EndDate, int _StartKm, int _EndKm, bool _DriverCked, string _cmbDriverName)
         {
@@ -45,58 +45,80 @@ namespace ABC_Drive.Hire
             EndKm = _EndKm;
             DriverCkedNo = _DriverCked;
             DriverName = _cmbDriverName;
-        }
-
-        public void DurationCalculation()
+        }*/
+        public int StayOverNights( DateTime StartDate , DateTime EndDate)
         {
-            //Customer Takes Time
             TimeSpan CountDays = EndDate - StartDate;
             Days = CountDays.TotalDays;
 
             OverNigths = Convert.ToInt32(Days);
 
-            var DriverRatePerOverNight = db.Drivers.Where(x => x.DriverName == DriverName).Select(u => u.RatePerOverNight).FirstOrDefault();
-            var VehicleNightParkRate = db.Vehicles.Where(x => x.VehicleNo == VehicleNo).Select(u => u.RatePerNightPark).FirstOrDefault();
-
+            return OverNigths;
+        }
+        public int TotalDriverOverNightRate(string _DriverName)
+        {
+            var DriverRatePerOverNight = db.Drivers.Where(x => x.DriverName == _DriverName).Select(u => u.RatePerOverNight).FirstOrDefault();
             if (OverNigths > 0)
             {
                 TotDriverOverNightRate = DriverRatePerOverNight * OverNigths;
+            }
+            return TotDriverOverNightRate;
+
+        }
+        public int TotalVehicleNightPark(string _VehicleNo)
+        {
+            var VehicleNightParkRate = db.Vehicles.Where(x => x.VehicleNo == _VehicleNo).Select(u => u.RatePerNightPark).FirstOrDefault();
+
+            if (OverNigths > 0)
+            {
                 TotVehicleNightPark = VehicleNightParkRate * OverNigths;
             }
-            TotNightStayCharge = TotDriverOverNightRate + TotVehicleNightPark;
+            return TotVehicleNightPark;
         }
-        public void KmCalculation()
+        public int TotalNightStayCharge(int TotDriverOverNightRate , int TotVehicleNightPark)
         {
-            //CustomerTakesKm
+            TotNightStayCharge = TotDriverOverNightRate + TotVehicleNightPark;
+            return TotNightStayCharge;
+        }
+
+        public int CalExtraKm(int StartKm , int EndKm, string VehicleNo , string PackageName)
+        {
             int TotCustomerKm = EndKm - StartKm;
             var GetMaxKmLimit = (from Package in db.Packages
-                                where Package.Vehicle.VehicleNo == VehicleNo && Package.PackageName == PackageName
-                                select Package.MaxKmLimit).FirstOrDefault();
+                                 where Package.Vehicle.VehicleNo == VehicleNo && Package.PackageName == PackageName
+                                 select Package.MaxKmLimit).FirstOrDefault();
             MaxKmLimit = GetMaxKmLimit;
 
             if (TotCustomerKm > MaxKmLimit)
             {
                 ExtraKm = TotCustomerKm - MaxKmLimit;
             }
-
-            //Extra Km Rate 
+            return ExtraKm;
+        }
+        public int ExtraKmCharge(int ExtraKm ,string VehicleNo, string PackageName)
+        {
             var GetExtraPerKmRate = (from Package in db.Packages
                                     where Package.Vehicle.VehicleNo == VehicleNo && Package.PackageName == PackageName
                                     select Package.ExtraRatePerKm).FirstOrDefault();
             ExtraRateKms = GetExtraPerKmRate * ExtraKm;
+
+            return ExtraRateKms;
         }
-        public void PackageStandardRate()
+        public int PackageStandardRate(string VehicleNo,string PackageName)
         {
             //Package Standard Rate
             var StandardRate = (from Package in db.Packages
                                 where Package.Vehicle.VehicleNo == VehicleNo && Package.PackageName == PackageName
                                 select Package.StandardRate).FirstOrDefault();
             PckStandardRate = StandardRate;
+
+            return PckStandardRate;
         }
-        public void TotalHireCalculation()
+        public int TotalHireCalculation(int PckStandardRate, int TotNightStayCharge , int ExtraRateKms)
         {
             //TotalHireCharge
             TotalHireCharge = PckStandardRate + TotNightStayCharge + ExtraRateKms;
+            return TotalHireCharge;
         }
     }
 }
