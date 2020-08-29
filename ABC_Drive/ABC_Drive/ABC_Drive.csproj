@@ -86,6 +86,10 @@
     <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.designer.cs">
       <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008290631362_EditStartTime.cs" />
+    <Compile Include="Migrations\202008290631362_EditStartTime.designer.cs">
+      <DependentUpon>202008290631362_EditStartTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Package\frmPackage.cs">
       <SubType>Form</SubType>
@@ -121,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008230631192_CreateHire&amp;Package.resx">
       <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008290631362_EditStartTime.resx">
+      <DependentUpon>202008290631362_EditStartTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Package\frmPackage.resx">
       <DependentUpon>frmPackage.cs</DependentUpon>

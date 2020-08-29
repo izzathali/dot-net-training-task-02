@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -77,10 +78,10 @@ namespace ABC_Drive.Hire
 
         private void btnAddVehicle_Click(object sender, EventArgs e)
         {
-            Package.frmPackage frmP = new Package.frmPackage(this.LoadcmbPackage);
-            using (frmP)
+            Vehicle.frmVehicle frmV = new Vehicle.frmVehicle(this.LoadcmbVehicle);
+            using (frmV)
             {
-                if (frmP.ShowDialog() == DialogResult.OK)
+                if (frmV.ShowDialog() == DialogResult.OK)
                 {
 
                 }
@@ -246,6 +247,71 @@ namespace ABC_Drive.Hire
                 DayTourHireCalculation();
                 txtEndTime.Text = "hh:mm";
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            DayTourHireCalculation();
+            if (cmbVehicleNo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select Vehicle No");
+            }
+            else if (cmbPackageName.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select Package");
+            }
+            else if (txtStartTime.Text == String.Empty)
+            {
+                MessageBox.Show("Plese type correct Start time format");
+            }
+            else if (txtEndTime.Text == String.Empty)
+            {
+                MessageBox.Show("Plese type correct End time format");
+            }
+            else if (txtStartKm.Text == String.Empty)
+            {
+                MessageBox.Show("Please type Start km");
+            }
+            else if (txtEndKm.Text == String.Empty)
+            {
+                MessageBox.Show("Please type End km");
+            }
+            else
+            {
+                SaveDayHire();
+                MessageBox.Show("Day hire record successfully saved.");
+                ClearText();
+            }
+        }
+        private void SaveDayHire()
+        {
+            Model.DayHire model = new Model.DayHire()
+            {
+                Packages = (Model.Package)cmbPackageName.SelectedItem,
+                StartTime = TimeSpan.Parse(txtStartTime.Text),
+                EndTime = TimeSpan.Parse(txtEndTime.Text),
+                StartKm = Convert.ToInt32(txtStartKm.Text),
+                EndKm = Convert.ToInt32(txtEndKm.Text),
+                HireCharge = Convert.ToInt32(txtHireCharge.Text),
+                WaitingCharge = Convert.ToInt32(txtWaitingCharge.Text),
+                ExtraKmCharge = Convert.ToInt32(txtExtraKmCharge.Text),
+                TotalHireCharge = Convert.ToInt32(lblTotalHireCharge.Text)
+            };
+            db.DayHires.Add(model);
+            db.SaveChanges();
+        }
+
+        private void btnAddPackage_Click(object sender, EventArgs e)
+        {
+            Package.frmPackage frmP = new Package.frmPackage(this.LoadcmbPackage);
+            using (frmP)
+            {
+                if (frmP.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+            LoadcmbVehicle();
         }
     }
 }

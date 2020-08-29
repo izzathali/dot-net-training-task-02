@@ -58,3 +58,4 @@ F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCal
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.CreateHirePackage.resources
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Package.frmPackage.resources
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Hire.frmDayHire.resources
+F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.EditStartTime.resources
