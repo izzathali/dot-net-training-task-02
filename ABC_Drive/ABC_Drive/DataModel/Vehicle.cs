@@ -24,6 +24,6 @@ namespace ABC_Drive.Model
         [Required]
         public int RatePerMonth { get; set; }
 
-        public ICollection<Rent> Rents { get; set; }
+        public virtual ICollection<Rent> Rents { get; set; }
     }
 }

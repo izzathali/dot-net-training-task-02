@@ -19,7 +19,7 @@ namespace ABC_Drive.Rent
         
         RentDbContext db = new RentDbContext();
         Model.Rent model = new Model.Rent();
-        private int VehicleID { get; set; }
+        private int VehicleID = 0;
         //int VehicleID;
         
         public frmRent()
@@ -44,96 +44,39 @@ namespace ABC_Drive.Rent
             cmbLoadDriver.ValueMember = "Id";
             cmbLoadDriver.SelectedIndex = -1;
         }
-
         private void RentCalculation()
         {
-            double Days = 0;
+            
+            int VehiId = VehicleID;
+            string VehiNo = txtVehicleNo.Text;
             DateTime RentedDate = dtpRentedDate.Value;
             DateTime ReturnedDate = dtpReturnedDate.Value;
-            bool driver = rbDriverYes.Checked;
+            bool Driver = rbDriverYes.Checked;
+            string DriverName = cmbLoadDriver.Text;
 
-            
+            Rent.RentCalculation Cal = new RentCalculation();
+            int Days = Cal.CountDays(RentedDate, ReturnedDate);
+            int RatePerDay = Cal.RatePerDay(VehicleID);
+            int RatePerWeek = Cal.RatePerWeek(VehicleID);
+            int RatePerMonth = Cal.RatePerMonth(VehicleID);
+            int DriverRatePerDay = Cal.DriverRatePerDay(DriverName);
+            int TotDays = Cal.TotDays(Days);
+            int TotWeeks = Cal.TotWeeks(Days);
+            int TotMonths = Cal.TotMonths(Days);
+            int TotDaysAmnt = Cal.TotDaysAmount(TotDays,RatePerDay);
+            int TotWeeksAmnt = Cal.TotWeeksAmount(TotWeeks,RatePerWeek);
+            int TotMonthsAmnt = Cal.TotMonthsAmount(TotMonths, RatePerMonth);
+            int TotDriverCharge = Cal.TotDriverCharge(Days,DriverRatePerDay);
+            int TotRent = Cal.TotalRent(TotDaysAmnt,TotWeeksAmnt,TotMonthsAmnt,TotDriverCharge);
 
-            TimeSpan CountDays = ReturnedDate - RentedDate;
-            Days = CountDays.TotalDays;
-
-            var RatePerDay = db.Vehicles.Where(x => x.VehicleId == VehicleID).Select(u => u.RatePerDay).FirstOrDefault();
-            var RatePerWeek = db.Vehicles.Where(x => x.VehicleId == VehicleID).Select(u => u.RatePerWeek).FirstOrDefault();
-            var RatePerMonth = db.Vehicles.Where(x => x.VehicleId == VehicleID).Select(u => u.RatePerMonth).FirstOrDefault();
-
-            //var DrvId = db.Drivers.Where(x => x.DriverName == cmbLoadDriver.SelectedText).Select(u => u.Id).FirstOrDefault();
-            var DriverRatePerDay = db.Drivers.Where(x => x.DriverName ==  cmbLoadDriver.Text).Select(u => u.DriverCost).FirstOrDefault();
-
-            int Weeks = 0;
-            int Months = 0;
-            int WithoutWkDays = 0;
-
-            int TotDayAmnt = 0;
-            int TotWeekAmnt = 0;
-            int TotMonthAmnt = 0;
-
-            int DriverCharge = 0;
-
-            float TotalRent = 0;
-
-            //lblTotDays.Text = Convert.ToInt32(Days).ToString();
-            //if (Days >= 7)
-            if (Days > 6)
-            {
-                if (Days > 30)
-                {
-                    Months = Convert.ToInt32(Days / 30);
-                    int CountWeeks = Convert.ToInt32(Days - (Months * 30));
-                    Weeks = Convert.ToInt32(CountWeeks / 7);
-                    WithoutWkDays = Convert.ToInt32(Days - (Weeks * 7) - (Months * 30));
-
-                    TotDayAmnt = WithoutWkDays * RatePerDay;
-                    TotWeekAmnt = Weeks * RatePerWeek;
-                    TotMonthAmnt = Months * RatePerMonth;
-
-                    TotalRent = TotMonthAmnt + TotWeekAmnt + TotDayAmnt;
-                }
-                else
-                {
-                    Weeks = Convert.ToInt32(Days / 7);
-                    WithoutWkDays = Convert.ToInt32(Days - (Weeks * 7));
-
-                    
-                    TotDayAmnt = WithoutWkDays * RatePerDay;
-                    TotWeekAmnt = Weeks * RatePerWeek;
-
-                    TotalRent = TotWeekAmnt + TotDayAmnt;
-                }
-            }
-            else
-            {
-                TotalRent = Convert.ToInt32(Days * RatePerDay);
-                TotDayAmnt = Convert.ToInt32(TotalRent);
-                WithoutWkDays = Convert.ToInt32( Days);
-            }
-            switch (driver)
-            {
-                case true:
-                    DriverCharge = Convert.ToInt32(Days * DriverRatePerDay);
-                    break;
-                case false:
-                    break;
-                default:
-                    break;
-            }
-
-            lblTotDays.Text = Convert.ToInt32(WithoutWkDays).ToString();
-            lblTotWeeks.Text = Convert.ToInt32(Weeks).ToString();
-            lblTotMonths.Text = Convert.ToInt32(Months).ToString();
-
-            txtTotDaysAmnt.Text = Convert.ToInt32(TotDayAmnt).ToString();
-            txtTotWeeksAmnt.Text = Convert.ToInt32(TotWeekAmnt).ToString();
-            txtTotMonthsAmnt.Text = Convert.ToInt32(TotMonthAmnt).ToString();
-
-            lblTotDriverCost.Text = Convert.ToInt32(DriverCharge).ToString();
-            //lblTotRent.Text = Convert.ToInt32(TotalRent).ToString();
-            int TotRentWithDriver = Convert.ToInt32(DriverCharge + TotalRent);
-            lblTotRent.Text = Convert.ToInt32(TotRentWithDriver).ToString();
+            lblTotDays.Text = TotDays.ToString();
+            lblTotWeeks.Text = TotWeeks.ToString();
+            lblTotMonths.Text = TotMonths.ToString();
+            txtTotDaysAmnt.Text = TotDaysAmnt.ToString();
+            txtTotWeeksAmnt.Text = TotWeeksAmnt.ToString();
+            txtTotMonthsAmnt.Text = TotMonthsAmnt.ToString();
+            lblTotDriverCost.Text = TotDriverCharge.ToString();
+            lblTotRent.Text = TotRent.ToString();
 
         }
 
@@ -164,9 +107,10 @@ namespace ABC_Drive.Rent
             try
             {
                 DataGridViewRow dgv = this.dgvVehicleList.CurrentRow;
-                VehicleID = Convert.ToInt32(dgv.Cells[0].Value);
+                VehicleID = int.Parse(dgv.Cells[0].Value.ToString());
                 this.txtVehicleNo.Text = dgv.Cells[1].Value.ToString();
                 dgvVehicleList.Visible = false;
+                RentCalculation();
             }
             catch (Exception ex)
             {
@@ -181,11 +125,6 @@ namespace ABC_Drive.Rent
                 MessageBox.Show("Please type a Vehicle No first.");
                 txtVehicleNo.Focus();
             }
-            else if(db.Vehicles.Any(p => p.VehicleId != VehicleID))
-            {
-                MessageBox.Show("Please type Valid Vehicle No");
-                txtVehicleNo.Focus();
-            }
             else
             {
                 RentCalculation();
@@ -196,11 +135,6 @@ namespace ABC_Drive.Rent
             if (txtVehicleNo.Text == String.Empty)
             {
                 MessageBox.Show("Please type a Vehicle No first.");
-                txtVehicleNo.Focus();
-            }
-            else if (db.Vehicles.Any(p => p.VehicleId != VehicleID))
-            {
-                MessageBox.Show("Please type Valid Vehicle No");
                 txtVehicleNo.Focus();
             }
             else
@@ -272,9 +206,52 @@ namespace ABC_Drive.Rent
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            if (txtVehicleNo.Text == String.Empty)
+            {
+                MessageBox.Show("Please Type Vehicle No.");
+            }
+            else if (dtpRentedDate.Value > dtpReturnedDate.Value)
+            {
+                MessageBox.Show("Please type valid date");
+            }
+            else if (rbDriverYes.Checked == true && cmbLoadDriver.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select Driver");
+            }
+            else
+            {
+                if (db.Vehicles.Any(p => p.VehicleNo == txtVehicleNo.Text))
+                {
+                    RentCalculation();
+                    SaveRent();
+                    MessageBox.Show("Rent successfully saved");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Vehicle No");
+                }
+                    
+            }
         }
-
+        private void SaveRent()
+        {
+            Model.Rent model = new Model.Rent()
+            {
+                VehicleId = VehicleID,
+                RentedDate = dtpRentedDate.Value,
+                ReturnedDate = dtpReturnedDate.Value,
+                Driver = (Model.Driver)cmbLoadDriver.SelectedItem,
+                TotDays = Convert.ToInt32(lblTotDays.Text),
+                TotDriverCost = Convert.ToInt32(lblTotDriverCost.Text),
+                TotDaysAmnt = Convert.ToInt32(txtTotDaysAmnt.Text),
+                TotWeeksAmnt = Convert.ToInt32(txtTotWeeksAmnt.Text),
+                TotMonthsAmnt = Convert.ToInt32(txtTotMonthsAmnt.Text),
+                TotalRent = Convert.ToInt32(lblTotRent.Text)
+            };
+            db.Rents.Add(model);
+            db.SaveChanges();
+        }
         private void btnAddDriver_Click(object sender, EventArgs e)
         {
             frmDriver frmD = new frmDriver(this.LoadCmbDriver);
@@ -292,12 +269,6 @@ namespace ABC_Drive.Rent
             if (txtVehicleNo.Text == String.Empty)
             {
                 MessageBox.Show("Please type a Vehicle No first.");
-                rbDriverNo.Checked = true;
-                txtVehicleNo.Focus();
-            }
-            else if (db.Vehicles.Any(p => p.VehicleId != VehicleID))
-            {
-                MessageBox.Show("Please type Valid Vehicle No");
                 rbDriverNo.Checked = true;
                 txtVehicleNo.Focus();
             }

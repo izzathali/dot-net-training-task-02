@@ -37,3 +37,5 @@ F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculati
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.pdb
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csprojAssemblyReference.cache
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.UpdateLicence.resources
+F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.UpdateVehicle.resources
+F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.UpdateVehicle1.resources

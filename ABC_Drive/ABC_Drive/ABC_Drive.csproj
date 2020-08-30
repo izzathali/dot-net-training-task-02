@@ -78,6 +78,14 @@
     <Compile Include="Migrations\202008231243290_UpdateLicence.designer.cs">
       <DependentUpon>202008231243290_UpdateLicence.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008291915590_UpdateVehicle.cs" />
+    <Compile Include="Migrations\202008291915590_UpdateVehicle.designer.cs">
+      <DependentUpon>202008291915590_UpdateVehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008300659296_UpdateVehicle1.cs" />
+    <Compile Include="Migrations\202008300659296_UpdateVehicle1.designer.cs">
+      <DependentUpon>202008300659296_UpdateVehicle1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +95,7 @@
     <Compile Include="Rent\frmRent.Designer.cs">
       <DependentUpon>frmRent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rent\RentCalculation.cs" />
     <Compile Include="Vehicle\frmVehicle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +113,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008231243290_UpdateLicence.resx">
       <DependentUpon>202008231243290_UpdateLicence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008291915590_UpdateVehicle.resx">
+      <DependentUpon>202008291915590_UpdateVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008300659296_UpdateVehicle1.resx">
+      <DependentUpon>202008300659296_UpdateVehicle1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
