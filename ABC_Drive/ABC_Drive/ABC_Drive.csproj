@@ -66,17 +66,9 @@
     </Compile>
     <Compile Include="DataModel\RentDbContext.cs" />
     <Compile Include="DataModel\Vehicle.cs" />
-    <Compile Include="Migrations\202008221411334_CreatDb.cs" />
-    <Compile Include="Migrations\202008221411334_CreatDb.designer.cs">
-      <DependentUpon>202008221411334_CreatDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008221955516_UpdateDb2.cs" />
-    <Compile Include="Migrations\202008221955516_UpdateDb2.designer.cs">
-      <DependentUpon>202008221955516_UpdateDb2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008231243290_UpdateLicence.cs" />
-    <Compile Include="Migrations\202008231243290_UpdateLicence.designer.cs">
-      <DependentUpon>202008231243290_UpdateLicence.cs</DependentUpon>
+    <Compile Include="Migrations\202008240939048_Create_Db.cs" />
+    <Compile Include="Migrations\202008240939048_Create_Db.designer.cs">
+      <DependentUpon>202008240939048_Create_Db.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202008291915590_UpdateVehicle.cs" />
     <Compile Include="Migrations\202008291915590_UpdateVehicle.designer.cs">
@@ -105,14 +97,8 @@
     <EmbeddedResource Include="Driver\frmDriver.resx">
       <DependentUpon>frmDriver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008221411334_CreatDb.resx">
-      <DependentUpon>202008221411334_CreatDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008221955516_UpdateDb2.resx">
-      <DependentUpon>202008221955516_UpdateDb2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008231243290_UpdateLicence.resx">
-      <DependentUpon>202008231243290_UpdateLicence.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008240939048_Create_Db.resx">
+      <DependentUpon>202008240939048_Create_Db.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008291915590_UpdateVehicle.resx">
       <DependentUpon>202008291915590_UpdateVehicle.cs</DependentUpon>
