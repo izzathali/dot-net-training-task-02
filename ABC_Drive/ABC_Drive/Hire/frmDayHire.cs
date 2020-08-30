@@ -89,87 +89,34 @@ namespace ABC_Drive.Hire
         }
         private void DayTourHireCalculation()
         {
-            int PckStandardRate = 0;
-            int ExtraRateKms = 0;
-            int ExtraRateHours = 0;
-            int MaxKmLimit = 0;
-            TimeSpan MaxNoOfHours = TimeSpan.Parse("0:0");
+            int PackageStandardRate = 0;
+            int ExtraKmsTotalRate = 0;
+            int WaitingCharge = 0;
 
-            //Inputs
             TimeSpan StartTime = (txtStartTime.Text == "" || txtStartTime.Text == "hh:mm") ? TimeSpan.Parse("0:0") : TimeSpan.Parse(txtStartTime.Text);
-            TimeSpan EndTime = (txtEndTime.Text == ""|| txtEndTime.Text == "hh:mm" || txtStartTime.Text == "hh:mm") ? TimeSpan.Parse("0:0") : TimeSpan.Parse(txtEndTime.Text);
+            TimeSpan EndTime = (txtEndTime.Text == "" || txtEndTime.Text == "hh:mm" || txtStartTime.Text == "hh:mm") ? TimeSpan.Parse("0:0") : TimeSpan.Parse(txtEndTime.Text);
             int StartKm = (txtStartKm.Text == "") ? 0 : Convert.ToInt32(txtStartKm.Text);
-            int EndKm = (txtEndKm.Text == "")? 0:Convert.ToInt32(txtEndKm.Text);
-            int ExtraHours = 0;
+            int EndKm = (txtEndKm.Text == "") ? 0 : Convert.ToInt32(txtEndKm.Text);
+            int WaitingHours = 0;
             int ExtraKm = 0;
+            string VehicleNo = cmbVehicleNo.Text;
+            string Package = cmbPackageName.Text;
 
-            //Assigning input from UI
-            //StartTime = TimeSpan.Parse(txtStartTime.Text);
-            //EndTime = TimeSpan.Parse(txtEndTime.Text);
-            //StartKm = Convert.ToInt32(txtStartKm.Text);
-            //EndKm = Convert.ToInt32(txtEndKm.Text);
+            DayTourHireCalculation Cal = new DayTourHireCalculation();
+            WaitingHours = Cal.WaitingHours(StartTime, EndTime, VehicleNo,Package);
+            WaitingCharge = Cal.WaitingCharge(WaitingHours, VehicleNo, Package);
+            ExtraKm = Cal.CalculateExtraKm(StartKm,EndKm,VehicleNo,Package);
+            ExtraKmsTotalRate = Cal.ExtraKmTotalRate(ExtraKm, VehicleNo,Package);
+            PackageStandardRate = Cal.PackageStandardRate(VehicleNo,Package);
+            int TotalHireCharge = Cal.TotalHireCharge(PackageStandardRate,WaitingCharge,ExtraKmsTotalRate);
 
-
-            //Customer Takes Time
-            TimeSpan TotCustomerDuration = EndTime - StartTime;
-            var GetMaxNoOfHours = from Package in db.Packages
-                                  where Package.Vehicle.VehicleNo == cmbVehicleNo.Text && Package.PackageName == cmbPackageName.Text
-                                  select Package.MaxNumOfHours;
-            MaxNoOfHours = GetMaxNoOfHours.FirstOrDefault();
-
-            TimeSpan ExtraHoursCalcu = TimeSpan.Parse("0:0");
-            
-            if (TotCustomerDuration > MaxNoOfHours)
-            {
-                ExtraHoursCalcu = TotCustomerDuration - MaxNoOfHours;
-            }
-            ExtraHours = Convert.ToInt32(ExtraHoursCalcu.TotalHours);
-            lblWaitingHours.Text = ExtraHours.ToString()+":hrs";
-
-            //Extra Hours Rate
-            var GetRatePerHour = from Package in db.Packages
-                                  where Package.Vehicle.VehicleNo == cmbVehicleNo.Text && Package.PackageName == cmbPackageName.Text
-                                  select Package.ExtraRatePerHour;
-            ExtraRateHours = GetRatePerHour.FirstOrDefault() * ExtraHours;
-            txtWaitingCharge.Text = ExtraRateHours.ToString();
-
-
-            //CustomerTakesKm
-            int TotCustomerKm = EndKm - StartKm;
-            var GetMaxKmLimit = from Package in db.Packages
-                                    where Package.Vehicle.VehicleNo == cmbVehicleNo.Text && Package.PackageName == cmbPackageName.Text
-                                    select Package.MaxKmLimit;
-
-            MaxKmLimit = GetMaxKmLimit.FirstOrDefault();
-
-            if (TotCustomerKm > MaxKmLimit)
-            {
-                ExtraKm = TotCustomerKm - MaxKmLimit;
-            }
-            lblExtraKm.Text = ExtraKm.ToString()+":km";
-
-            //Extra Km Rate 
-            var GetExtraPerKmRate = from Package in db.Packages
-                                    where Package.Vehicle.VehicleNo == cmbVehicleNo.Text && Package.PackageName == cmbPackageName.Text
-                                    select Package.ExtraRatePerKm;
-            ExtraRateKms = GetExtraPerKmRate.FirstOrDefault() * ExtraKm;
-            txtExtraKmCharge.Text = ExtraRateKms.ToString();
-
-            //Package Standard Rate
-            var StandardRate = from Package in db.Packages
-                               where Package.Vehicle.VehicleNo == cmbVehicleNo.Text && Package.PackageName == cmbPackageName.Text
-                               select Package.StandardRate;
-            PckStandardRate = StandardRate.FirstOrDefault();
-
-            txtHireCharge.Text = PckStandardRate.ToString();
-
-            //TotalHireCharge
-            int TotalHireCharge = 0;
-            TotalHireCharge = PckStandardRate + ExtraRateHours + ExtraRateKms;
+            lblWaitingHours.Text = WaitingHours.ToString() + ":hrs";
+            txtWaitingCharge.Text = WaitingCharge.ToString();
+            lblExtraKm.Text = ExtraKm.ToString() + ":km";
+            txtExtraKmCharge.Text = ExtraKmsTotalRate.ToString();
+            txtHireCharge.Text = PackageStandardRate.ToString();
             lblTotalHireCharge.Text = TotalHireCharge.ToString();
-
         }
-
         private void cmbPackageName_SelectedIndexChanged(object sender, EventArgs e)
         {
             DayTourHireCalculation();
@@ -278,6 +225,7 @@ namespace ABC_Drive.Hire
             }
             else
             {
+                DayTourHireCalculation();
                 SaveDayHire();
                 MessageBox.Show("Day hire record successfully saved.");
                 ClearText();

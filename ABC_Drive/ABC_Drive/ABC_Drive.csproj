@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="DataModel\RentDbContext.cs" />
     <Compile Include="DataModel\Vehicle.cs" />
+    <Compile Include="Hire\DayTourHireCalculation.cs" />
     <Compile Include="Hire\frmDayHire.cs">
       <SubType>Form</SubType>
     </Compile>
