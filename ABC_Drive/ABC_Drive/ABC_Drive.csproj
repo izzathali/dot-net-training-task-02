@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dashboard\frmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard\frmDashboard.Designer.cs">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\Driver.cs" />
     <Compile Include="DataModel\DayHire.cs" />
     <Compile Include="DataModel\LongHire.cs" />
@@ -69,21 +75,9 @@
     </Compile>
     <Compile Include="DataModel\RentDbContext.cs" />
     <Compile Include="DataModel\Vehicle.cs" />
-    <Compile Include="Migrations\202008240939048_Create_Db.cs" />
-    <Compile Include="Migrations\202008240939048_Create_Db.designer.cs">
-      <DependentUpon>202008240939048_Create_Db.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008221955516_UpdateDb2.cs" />
-    <Compile Include="Migrations\202008221955516_UpdateDb2.designer.cs">
-      <DependentUpon>202008221955516_UpdateDb2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.cs" />
-    <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.designer.cs">
-      <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008270624395_CreateLongHire.cs" />
-    <Compile Include="Migrations\202008270624395_CreateLongHire.designer.cs">
-      <DependentUpon>202008270624395_CreateLongHire.cs</DependentUpon>
+    <Compile Include="Migrations\202008302013543_CreateDb.cs" />
+    <Compile Include="Migrations\202008302013543_CreateDb.designer.cs">
+      <DependentUpon>202008302013543_CreateDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Package\frmPackage.cs">
@@ -100,32 +94,38 @@
     <Compile Include="Rent\frmRent.Designer.cs">
       <DependentUpon>frmRent.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlls\daytour.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\daytour.Designer.cs">
+      <DependentUpon>daytour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlls\longhire.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\longhire.Designer.cs">
+      <DependentUpon>longhire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlls\Rent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Rent.Designer.cs">
+      <DependentUpon>Rent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vehicle\frmVehicle.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vehicle\frmVehicle.Designer.cs">
       <DependentUpon>frmVehicle.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dashboard\frmDashboard.resx">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Driver\frmDriver.resx">
       <DependentUpon>frmDriver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Hire\frmDayHire.resx">
-      <DependentUpon>frmDayHire.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Hire\frmLongHire.resx">
-      <DependentUpon>frmLongHire.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008221411334_CreatDb.resx">
-      <DependentUpon>202008221411334_CreatDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008221955516_UpdateDb2.resx">
-      <DependentUpon>202008221955516_UpdateDb2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008230631192_CreateHire&amp;Package.resx">
-      <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008270624395_CreateLongHire.resx">
-      <DependentUpon>202008270624395_CreateLongHire.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008302013543_CreateDb.resx">
+      <DependentUpon>202008302013543_CreateDb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Package\frmPackage.resx">
       <DependentUpon>frmPackage.cs</DependentUpon>
@@ -141,6 +141,15 @@
     </Compile>
     <EmbeddedResource Include="Rent\frmRent.resx">
       <DependentUpon>frmRent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\daytour.resx">
+      <DependentUpon>daytour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\longhire.resx">
+      <DependentUpon>longhire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\Rent.resx">
+      <DependentUpon>Rent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vehicle\frmVehicle.resx">
       <DependentUpon>frmVehicle.cs</DependentUpon>
@@ -159,7 +168,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Hire\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
