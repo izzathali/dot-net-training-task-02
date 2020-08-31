@@ -112,80 +112,45 @@ namespace ABC_Drive.Hire
             }
             LoadcmbVehicle();
         }
-
         private void LongTourHireCalculation()
         {
-            int PckStandardRate = 0;
-            int ExtraRateKms = 0;
-            int TotDriverOverNightRate = 0;
-            int TotVehicleNightPark = 0;
-            int TotNightStayCharge = 0;
-            int MaxKmLimit = 0;
-            double Days = 0;
+            string _cmbVehicleNo = cmbVehicleNo.Text;
+            string _cmbPackage = cmbPackageName.Text;
+            DateTime _StartDate = dtpStartDate.Value;
+            DateTime _EndDate = dtpEndDate.Value;
+            int _StartKm = (txtStartKm.Text == "") ? 0 : Convert.ToInt32(txtStartKm.Text);
+            int _EndKm = (txtEndKm.Text == "") ? 0 : Convert.ToInt32(txtEndKm.Text);
+            bool _DriverCked = rbDriverNo.Checked;
+            string _cmbDriverName = cmbDriverName.Text;
 
-            //Inputs
-            DateTime StartDate = dtpStartDate.Value;
-            DateTime EndDate = dtpEndDate.Value;
-            int StartKm = (txtStartKm.Text == "") ? 0 : Convert.ToInt32(txtStartKm.Text);
-            int EndKm = (txtEndKm.Text == "") ? 0 : Convert.ToInt32(txtEndKm.Text);
-            int OverNigths = 0;
-            int ExtraKm = 0;
+            /*
+            LongTourHireCalculation Cal = new LongTourHireCalculation(_cmbVehicleNo,_cmbPackage,_StartDate,_EndDate,_StartKm,
+                _EndKm,_DriverCked,_cmbDriverName);*/
+            LongTourHireCalculation Cal = new LongTourHireCalculation();
 
-            
-            //Customer Takes Time
-            TimeSpan CountDays = EndDate - StartDate;
-            Days = CountDays.TotalDays;
+            int StayOverNights = Cal.StayOverNights(_StartDate,_EndDate);
+            lblOverNightStay.Text = StayOverNights.ToString()+":nts";
 
-            OverNigths = Convert.ToInt32(Days);
+            int TotDriverOvrNightRate = Cal.TotalDriverOverNightRate(_cmbDriverName);
+            lblDriverOverNight.Text = TotDriverOvrNightRate.ToString();
 
-            var DriverRatePerOverNight = db.Drivers.Where(x => x.DriverName == cmbDriverName.Text).Select(u => u.RatePerOverNight).FirstOrDefault();
-            var VehicleNightParkRate = db.Vehicles.Where(x => x.VehicleNo == cmbVehicleNo.Text).Select(u => u.RatePerNightPark).FirstOrDefault();
+            int TotVehiNightParkRate = Cal.TotalVehicleNightPark(_cmbVehicleNo);
+            lblVehicleNightPark.Text = TotVehiNightParkRate.ToString();
 
-            if (OverNigths > 0)
-            {
-                TotDriverOverNightRate = DriverRatePerOverNight * OverNigths;
-                TotVehicleNightPark = VehicleNightParkRate * OverNigths;
-            }
-            lblDriverOverNight.Text = TotDriverOverNightRate.ToString();
-            lblVehicleNightPark.Text = TotVehicleNightPark.ToString();
-            lblOverNightStay.Text = OverNigths.ToString() + ":nts";
-            TotNightStayCharge = TotDriverOverNightRate + TotVehicleNightPark;
-            txtNightStayCharge.Text = TotNightStayCharge.ToString();
+            int TotalNightStayCharge = Cal.TotalNightStayCharge(TotDriverOvrNightRate,TotVehiNightParkRate);
+            txtNightStayCharge.Text = TotalNightStayCharge.ToString();
 
-            //CustomerTakesKm
-            int TotCustomerKm = EndKm - StartKm;
-            var GetMaxKmLimit = from Package in db.Packages
-                                where Package.Vehicle.VehicleNo == cmbVehicleNo.Text && Package.PackageName == cmbPackageName.Text
-                                select Package.MaxKmLimit;
+            int CalExtraKm = Cal.CalExtraKm(_StartKm, _EndKm, _cmbVehicleNo,_cmbPackage);
+            lblExtraKm.Text = CalExtraKm.ToString() + ":km";
 
-            MaxKmLimit = GetMaxKmLimit.FirstOrDefault();
+            int ExtraKmCharge = Cal.ExtraKmCharge(CalExtraKm, _cmbVehicleNo, _cmbPackage);
+            txtExtraKmCharge.Text = ExtraKmCharge.ToString();
 
-            if (TotCustomerKm > MaxKmLimit)
-            {
-                ExtraKm = TotCustomerKm - MaxKmLimit;
-            }
-            lblExtraKm.Text = ExtraKm.ToString() + ":km";
+            int PackageStandardRate = Cal.PackageStandardRate(_cmbVehicleNo, _cmbPackage);
+            txtHireCharge.Text = PackageStandardRate.ToString();
 
-            //Extra Km Rate 
-            var GetExtraPerKmRate = from Package in db.Packages
-                                    where Package.Vehicle.VehicleNo == cmbVehicleNo.Text && Package.PackageName == cmbPackageName.Text
-                                    select Package.ExtraRatePerKm;
-            ExtraRateKms = GetExtraPerKmRate.FirstOrDefault() * ExtraKm;
-            txtExtraKmCharge.Text = ExtraRateKms.ToString();
-
-            //Package Standard Rate
-            var StandardRate = (from Package in db.Packages
-                               where Package.Vehicle.VehicleNo == cmbVehicleNo.Text && Package.PackageName == cmbPackageName.Text
-                               select Package.StandardRate).FirstOrDefault();
-            PckStandardRate = StandardRate;
-
-            txtHireCharge.Text = PckStandardRate.ToString();
-            
-            //TotalHireCharge
-            int TotalHireCharge = 0;
-            TotalHireCharge = PckStandardRate + TotNightStayCharge + ExtraRateKms;
+            int TotalHireCharge = Cal.TotalHireCalculation(PackageStandardRate, TotalNightStayCharge, ExtraKmCharge);
             lblTotalHireCharge.Text = TotalHireCharge.ToString();
-            
         }
 
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)

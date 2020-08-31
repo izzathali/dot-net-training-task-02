@@ -37,6 +37,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rbDriverNo = new System.Windows.Forms.RadioButton();
+            this.rbDriverYes = new System.Windows.Forms.RadioButton();
             this.btnAddDriver = new System.Windows.Forms.Button();
             this.cmbDriverName = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -68,8 +70,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.rbDriverNo = new System.Windows.Forms.RadioButton();
-            this.rbDriverYes = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -178,6 +178,33 @@
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Driver info";
+            // 
+            // rbDriverNo
+            // 
+            this.rbDriverNo.AutoSize = true;
+            this.rbDriverNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDriverNo.Location = new System.Drawing.Point(133, 34);
+            this.rbDriverNo.Name = "rbDriverNo";
+            this.rbDriverNo.Size = new System.Drawing.Size(46, 22);
+            this.rbDriverNo.TabIndex = 7;
+            this.rbDriverNo.TabStop = true;
+            this.rbDriverNo.Text = "No";
+            this.rbDriverNo.UseVisualStyleBackColor = true;
+            this.rbDriverNo.CheckedChanged += new System.EventHandler(this.rbDriverNo_CheckedChanged);
+            this.rbDriverNo.Click += new System.EventHandler(this.rbDriverNo_Click);
+            // 
+            // rbDriverYes
+            // 
+            this.rbDriverYes.AutoSize = true;
+            this.rbDriverYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDriverYes.Location = new System.Drawing.Point(76, 34);
+            this.rbDriverYes.Name = "rbDriverYes";
+            this.rbDriverYes.Size = new System.Drawing.Size(51, 22);
+            this.rbDriverYes.TabIndex = 8;
+            this.rbDriverYes.TabStop = true;
+            this.rbDriverYes.Text = "Yes";
+            this.rbDriverYes.UseVisualStyleBackColor = true;
+            this.rbDriverYes.Click += new System.EventHandler(this.rbDriverYes_Click);
             // 
             // btnAddDriver
             // 
@@ -508,33 +535,6 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // rbDriverNo
-            // 
-            this.rbDriverNo.AutoSize = true;
-            this.rbDriverNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDriverNo.Location = new System.Drawing.Point(133, 34);
-            this.rbDriverNo.Name = "rbDriverNo";
-            this.rbDriverNo.Size = new System.Drawing.Size(46, 22);
-            this.rbDriverNo.TabIndex = 7;
-            this.rbDriverNo.TabStop = true;
-            this.rbDriverNo.Text = "No";
-            this.rbDriverNo.UseVisualStyleBackColor = true;
-            this.rbDriverNo.CheckedChanged += new System.EventHandler(this.rbDriverNo_CheckedChanged);
-            this.rbDriverNo.Click += new System.EventHandler(this.rbDriverNo_Click);
-            // 
-            // rbDriverYes
-            // 
-            this.rbDriverYes.AutoSize = true;
-            this.rbDriverYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDriverYes.Location = new System.Drawing.Point(76, 34);
-            this.rbDriverYes.Name = "rbDriverYes";
-            this.rbDriverYes.Size = new System.Drawing.Size(51, 22);
-            this.rbDriverYes.TabIndex = 8;
-            this.rbDriverYes.TabStop = true;
-            this.rbDriverYes.Text = "Yes";
-            this.rbDriverYes.UseVisualStyleBackColor = true;
-            this.rbDriverYes.Click += new System.EventHandler(this.rbDriverYes_Click);
-            // 
             // frmLongHire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -543,6 +543,8 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLongHire";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Long Tour Hire Calculation";
