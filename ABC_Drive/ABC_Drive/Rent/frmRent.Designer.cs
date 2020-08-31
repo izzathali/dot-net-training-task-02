@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbLoadDriver = new System.Windows.Forms.ComboBox();
             this.btnAddDriver = new System.Windows.Forms.Button();
             this.btnAddVehicle = new System.Windows.Forms.Button();
+            this.rbDriverNo = new System.Windows.Forms.RadioButton();
+            this.rbDriverYes = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
             this.dtpReturnedDate = new System.Windows.Forms.DateTimePicker();
             this.dtpRentedDate = new System.Windows.Forms.DateTimePicker();
@@ -57,9 +60,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.dgvVehicleList = new System.Windows.Forms.DataGridView();
-            this.rbDriverYes = new System.Windows.Forms.RadioButton();
-            this.rbDriverNo = new System.Windows.Forms.RadioButton();
-            this.cmbLoadDriver = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -89,6 +89,15 @@
             this.panel1.Size = new System.Drawing.Size(692, 195);
             this.panel1.TabIndex = 0;
             // 
+            // cmbLoadDriver
+            // 
+            this.cmbLoadDriver.FormattingEnabled = true;
+            this.cmbLoadDriver.Location = new System.Drawing.Point(472, 144);
+            this.cmbLoadDriver.Name = "cmbLoadDriver";
+            this.cmbLoadDriver.Size = new System.Drawing.Size(161, 28);
+            this.cmbLoadDriver.TabIndex = 7;
+            this.cmbLoadDriver.SelectedIndexChanged += new System.EventHandler(this.cmbLoadDriver_SelectedIndexChanged);
+            // 
             // btnAddDriver
             // 
             this.btnAddDriver.Cursor = System.Windows.Forms.Cursors.Default;
@@ -114,6 +123,33 @@
             this.btnAddVehicle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAddVehicle.UseVisualStyleBackColor = true;
             this.btnAddVehicle.Click += new System.EventHandler(this.btnAddVehicle_Click);
+            // 
+            // rbDriverNo
+            // 
+            this.rbDriverNo.AutoSize = true;
+            this.rbDriverNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDriverNo.Location = new System.Drawing.Point(609, 115);
+            this.rbDriverNo.Name = "rbDriverNo";
+            this.rbDriverNo.Size = new System.Drawing.Size(46, 22);
+            this.rbDriverNo.TabIndex = 5;
+            this.rbDriverNo.TabStop = true;
+            this.rbDriverNo.Text = "No";
+            this.rbDriverNo.UseVisualStyleBackColor = true;
+            this.rbDriverNo.CheckedChanged += new System.EventHandler(this.rbDriverNo_CheckedChanged);
+            // 
+            // rbDriverYes
+            // 
+            this.rbDriverYes.AutoSize = true;
+            this.rbDriverYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDriverYes.Location = new System.Drawing.Point(552, 115);
+            this.rbDriverYes.Name = "rbDriverYes";
+            this.rbDriverYes.Size = new System.Drawing.Size(51, 22);
+            this.rbDriverYes.TabIndex = 6;
+            this.rbDriverYes.TabStop = true;
+            this.rbDriverYes.Text = "Yes";
+            this.rbDriverYes.UseVisualStyleBackColor = true;
+            this.rbDriverYes.CheckedChanged += new System.EventHandler(this.rbDriverYes_CheckedChanged);
+            this.rbDriverYes.Click += new System.EventHandler(this.rbDriverYes_Click);
             // 
             // label7
             // 
@@ -392,42 +428,6 @@
             this.dgvVehicleList.TabIndex = 13;
             this.dgvVehicleList.Visible = false;
             this.dgvVehicleList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVehicleList_CellClick);
-            // 
-            // rbDriverYes
-            // 
-            this.rbDriverYes.AutoSize = true;
-            this.rbDriverYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDriverYes.Location = new System.Drawing.Point(552, 115);
-            this.rbDriverYes.Name = "rbDriverYes";
-            this.rbDriverYes.Size = new System.Drawing.Size(51, 22);
-            this.rbDriverYes.TabIndex = 6;
-            this.rbDriverYes.TabStop = true;
-            this.rbDriverYes.Text = "Yes";
-            this.rbDriverYes.UseVisualStyleBackColor = true;
-            this.rbDriverYes.CheckedChanged += new System.EventHandler(this.rbDriverYes_CheckedChanged);
-            this.rbDriverYes.Click += new System.EventHandler(this.rbDriverYes_Click);
-            // 
-            // rbDriverNo
-            // 
-            this.rbDriverNo.AutoSize = true;
-            this.rbDriverNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDriverNo.Location = new System.Drawing.Point(609, 115);
-            this.rbDriverNo.Name = "rbDriverNo";
-            this.rbDriverNo.Size = new System.Drawing.Size(46, 22);
-            this.rbDriverNo.TabIndex = 5;
-            this.rbDriverNo.TabStop = true;
-            this.rbDriverNo.Text = "No";
-            this.rbDriverNo.UseVisualStyleBackColor = true;
-            this.rbDriverNo.CheckedChanged += new System.EventHandler(this.rbDriverNo_CheckedChanged);
-            // 
-            // cmbLoadDriver
-            // 
-            this.cmbLoadDriver.FormattingEnabled = true;
-            this.cmbLoadDriver.Location = new System.Drawing.Point(472, 144);
-            this.cmbLoadDriver.Name = "cmbLoadDriver";
-            this.cmbLoadDriver.Size = new System.Drawing.Size(161, 28);
-            this.cmbLoadDriver.TabIndex = 7;
-            this.cmbLoadDriver.SelectedIndexChanged += new System.EventHandler(this.cmbLoadDriver_SelectedIndexChanged);
             // 
             // frmRent
             // 
