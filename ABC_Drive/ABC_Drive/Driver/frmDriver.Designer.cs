@@ -38,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txtRatePerOverNight = new System.Windows.Forms.TextBox();
+            //this.txtRatePerOverNight = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -142,10 +142,10 @@
             // 
             // txtRatePerOverNight
             // 
-            this.txtRatePerOverNight.Location = new System.Drawing.Point(70, 135);
-            this.txtRatePerOverNight.Name = "txtRatePerOverNight";
-            this.txtRatePerOverNight.Size = new System.Drawing.Size(219, 26);
-            this.txtRatePerOverNight.TabIndex = 7;
+            //this.txtRatePerOverNight.Location = new System.Drawing.Point(70, 135);
+            //this.txtRatePerOverNight.Name = "txtRatePerOverNight";
+            //this.txtRatePerOverNight.Size = new System.Drawing.Size(219, 26);
+            //this.txtRatePerOverNight.TabIndex = 7;
             // 
             // label3
             // 

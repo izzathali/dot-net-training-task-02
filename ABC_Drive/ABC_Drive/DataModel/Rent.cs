@@ -13,7 +13,7 @@ namespace ABC_Drive.Model
         [Key]
         public int RentId { get; set; }
         [Required]
-        public Vehicle Vehicle { get; set; }
+        public int VehicleId { get; set; }
         [Required]
         public DateTime RentedDate { get; set; }
         [Required]
