@@ -22,7 +22,8 @@ namespace ABC_Drive.Model
         public DateTime RentedDate { get; set; }
         [Required]
         public DateTime ReturnedDate { get; set; }
-        public Driver Driver { get; set; }
+        public int? DriverId { get; set; }
+        public virtual Driver Driver { get; set; }
         public int TotDays { get; set; }
         public int TotDriverCost { get; set; }
         public int TotDaysAmnt { get; set; }
