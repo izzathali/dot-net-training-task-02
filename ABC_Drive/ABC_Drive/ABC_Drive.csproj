@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="DataModel\RentDbContext.cs" />
     <Compile Include="DataModel\Vehicle.cs" />
+    <Compile Include="Hire\DayTourHireCalculation.cs" />
     <Compile Include="Hire\frmDayHire.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +96,22 @@
     <Compile Include="Migrations\202009021227372_UpdateRent.cs" />
     <Compile Include="Migrations\202009021227372_UpdateRent.designer.cs">
       <DependentUpon>202009021227372_UpdateRent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.cs" />
+    <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.designer.cs">
+      <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008270624395_CreateLongHire.cs" />
+    <Compile Include="Migrations\202008270624395_CreateLongHire.designer.cs">
+      <DependentUpon>202008270624395_CreateLongHire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.cs" />
+    <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.designer.cs">
+      <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008290631362_EditStartTime.cs" />
+    <Compile Include="Migrations\202008290631362_EditStartTime.designer.cs">
+      <DependentUpon>202008290631362_EditStartTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Package\frmPackage.cs">
@@ -165,6 +182,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009021227372_UpdateRent.resx">
       <DependentUpon>202009021227372_UpdateRent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008230631192_CreateHire&amp;Package.resx">
+      <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008270624395_CreateLongHire.resx">
+      <DependentUpon>202008270624395_CreateLongHire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008230631192_CreateHire&amp;Package.resx">
+      <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008290631362_EditStartTime.resx">
+      <DependentUpon>202008290631362_EditStartTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Package\frmPackage.resx">
       <DependentUpon>frmPackage.cs</DependentUpon>
