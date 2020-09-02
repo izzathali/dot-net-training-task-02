@@ -75,6 +75,19 @@
     </Compile>
     <Compile Include="DataModel\RentDbContext.cs" />
     <Compile Include="DataModel\Vehicle.cs" />
+    <Compile Include="Hire\frmDayHire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hire\frmDayHire.Designer.cs">
+      <DependentUpon>frmDayHire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hire\frmLongHire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hire\frmLongHire.Designer.cs">
+      <DependentUpon>frmLongHire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hire\LongTourHireCalculation.cs" />
     <Compile Include="Migrations\202008302013543_CreateDb.cs" />
     <Compile Include="Migrations\202008302013543_CreateDb.designer.cs">
       <DependentUpon>202008302013543_CreateDb.cs</DependentUpon>
@@ -98,6 +111,7 @@
     <Compile Include="Rent\frmRent.Designer.cs">
       <DependentUpon>frmRent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rent\RentCalculation.cs" />
     <Compile Include="Rent\frmRentDelete.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +153,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Driver\frmDriver.resx">
       <DependentUpon>frmDriver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hire\frmDayHire.resx">
+      <DependentUpon>frmDayHire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hire\frmLongHire.resx">
+      <DependentUpon>frmLongHire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008302013543_CreateDb.resx">
       <DependentUpon>202008302013543_CreateDb.cs</DependentUpon>
