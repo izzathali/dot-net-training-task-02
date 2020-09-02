@@ -35,6 +35,7 @@ namespace ABC_Drive.UserControlls
                     var rent = from Rent in db.Rents
                                select new
                                {
+                                   RentId = Rent.RentId,
                                    Vehicle = Rent.VehicleId,
                                    RentedDate = Rent.RentedDate,
                                    ReturnedDate = Rent.ReturnedDate,
@@ -48,6 +49,7 @@ namespace ABC_Drive.UserControlls
                                };
                     bs.DataSource = rent.ToList();
                     dgvRent.DataSource = bs;
+                    dgvRent.Columns[0].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -71,12 +73,50 @@ namespace ABC_Drive.UserControlls
 
         private void btnEditRent_Click(object sender, EventArgs e)
         {
+            try
+            {
+                frmRentEdit rentEdit = new frmRentEdit();
+                using (rentEdit)
+                {
+                    if (dgvRent.CurrentRow.Index != -1 || dgvRent.CurrentRow.Index > 0)
+                    {
+                        int indx = dgvRent.CurrentRow.Index;
+                        rentEdit.dgvr = dgvRent.Rows[indx];
+                        if (rentEdit.ShowDialog() == DialogResult.OK)
+                        {
 
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnDeleteRent_Click(object sender, EventArgs e)
         {
+            try
+            {
+                frmRentDelete rentDelete = new frmRentDelete();
+                using (rentDelete)
+                {
+                    if (dgvRent.CurrentRow.Index != -1 || dgvRent.CurrentRow.Index > 0)
+                    {
+                        int indx = dgvRent.CurrentRow.Index;
+                        rentDelete.dgvr = dgvRent.Rows[indx];
+                        if (rentDelete.ShowDialog() == DialogResult.OK)
+                        {
 
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
