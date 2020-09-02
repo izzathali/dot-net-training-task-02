@@ -79,6 +79,10 @@
     <Compile Include="Migrations\202008302013543_CreateDb.designer.cs">
       <DependentUpon>202008302013543_CreateDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009021227372_UpdateRent.cs" />
+    <Compile Include="Migrations\202009021227372_UpdateRent.designer.cs">
+      <DependentUpon>202009021227372_UpdateRent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Package\frmPackage.cs">
       <SubType>Form</SubType>
@@ -93,6 +97,18 @@
     </Compile>
     <Compile Include="Rent\frmRent.Designer.cs">
       <DependentUpon>frmRent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rent\frmRentDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rent\frmRentDelete.Designer.cs">
+      <DependentUpon>frmRentDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rent\frmRentEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rent\frmRentEdit.Designer.cs">
+      <DependentUpon>frmRentEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlls\daytour.cs">
       <SubType>UserControl</SubType>
@@ -127,6 +143,9 @@
     <EmbeddedResource Include="Migrations\202008302013543_CreateDb.resx">
       <DependentUpon>202008302013543_CreateDb.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009021227372_UpdateRent.resx">
+      <DependentUpon>202009021227372_UpdateRent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Package\frmPackage.resx">
       <DependentUpon>frmPackage.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +160,12 @@
     </Compile>
     <EmbeddedResource Include="Rent\frmRent.resx">
       <DependentUpon>frmRent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rent\frmRentDelete.resx">
+      <DependentUpon>frmRentDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rent\frmRentEdit.resx">
+      <DependentUpon>frmRentEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\daytour.resx">
       <DependentUpon>daytour.cs</DependentUpon>
