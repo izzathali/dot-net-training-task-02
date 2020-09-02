@@ -15,9 +15,11 @@ namespace ABC_Drive.Vehicle
     {
         Model.Vehicle model = new Model.Vehicle();
         RentDbContext db = new RentDbContext();
-        public frmVehicle()
+        private readonly Action _dataUpdate;
+        public frmVehicle(Action dataUpdate)
         {
             InitializeComponent();
+            _dataUpdate = dataUpdate;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -61,6 +63,7 @@ namespace ABC_Drive.Vehicle
                     db.Vehicles.Add(model);
                     db.SaveChanges();
                     MessageBox.Show("Vehicle details Successfully Saved");
+                    _dataUpdate();
                     this.Close();
                 }
                

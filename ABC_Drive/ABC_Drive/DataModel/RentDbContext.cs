@@ -13,5 +13,7 @@ namespace ABC_Drive.Model
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Rent> Rents { get; set; }
         public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Package> Packages { get; set; }
+        public DbSet<DayHire> DayHires { get; set; }
     }
 }
