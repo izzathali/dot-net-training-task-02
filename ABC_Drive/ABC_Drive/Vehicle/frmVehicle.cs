@@ -44,6 +44,10 @@ namespace ABC_Drive.Vehicle
             {
                 MessageBox.Show("Please type rate per Month");
             }
+            else if (txtRatePerNightPark.Text == String.Empty)
+            {
+                MessageBox.Show("Please type rate per night Park");
+            }
             else
             {
                 if (db.Vehicles.Any(p => p.VehicleNo == txtVehicleNo.Text))
@@ -52,22 +56,27 @@ namespace ABC_Drive.Vehicle
                 }
                 else
                 {
-                    Model.Vehicle model = new Model.Vehicle()
-                    {
-                        VehicleNo = txtVehicleNo.Text,
-                        VehicleName = txtVehicleName.Text,
-                        RatePerDay = Convert.ToInt32(txtRatePerDay.Text),
-                        RatePerWeek = Convert.ToInt32(txtRatePerWeek.Text),
-                        RatePerMonth = Convert.ToInt32(txtRatePerMonth.Text)
-                    };
-                    db.Vehicles.Add(model);
-                    db.SaveChanges();
+                    SaveVehicle();
                     MessageBox.Show("Vehicle details Successfully Saved");
                     _dataUpdate();
                     this.Close();
                 }
                
             }
+        }
+        private void SaveVehicle()
+        {
+            Model.Vehicle model = new Model.Vehicle()
+            {
+                VehicleNo = txtVehicleNo.Text,
+                VehicleName = txtVehicleName.Text,
+                RatePerDay = Convert.ToInt32(txtRatePerDay.Text),
+                RatePerWeek = Convert.ToInt32(txtRatePerWeek.Text),
+                RatePerMonth = Convert.ToInt32(txtRatePerMonth.Text),
+                RatePerNightPark = Convert.ToInt32(txtRatePerNightPark.Text)
+            };
+            db.Vehicles.Add(model);
+            db.SaveChanges();
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {

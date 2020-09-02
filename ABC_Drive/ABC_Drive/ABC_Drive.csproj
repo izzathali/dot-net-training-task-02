@@ -68,11 +68,7 @@
     </Compile>
     <Compile Include="DataModel\RentDbContext.cs" />
     <Compile Include="DataModel\Vehicle.cs" />
-<<<<<<< HEAD
-    <Compile Include="Migrations\202008240939048_Create_Db.cs" />
-    <Compile Include="Migrations\202008240939048_Create_Db.designer.cs">
-      <DependentUpon>202008240939048_Create_Db.cs</DependentUpon>
-=======
+    <Compile Include="Hire\DayTourHireCalculation.cs" />
     <Compile Include="Hire\frmDayHire.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,11 +82,14 @@
     <Compile Include="Migrations\202008221955516_UpdateDb2.cs" />
     <Compile Include="Migrations\202008221955516_UpdateDb2.designer.cs">
       <DependentUpon>202008221955516_UpdateDb2.cs</DependentUpon>
->>>>>>> Function 2 - Day tour hire calculation
     </Compile>
     <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.cs" />
     <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.designer.cs">
       <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008290631362_EditStartTime.cs" />
+    <Compile Include="Migrations\202008290631362_EditStartTime.designer.cs">
+      <DependentUpon>202008290631362_EditStartTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Package\frmPackage.cs">
@@ -116,10 +115,6 @@
     <EmbeddedResource Include="Driver\frmDriver.resx">
       <DependentUpon>frmDriver.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="Migrations\202008240939048_Create_Db.resx">
-      <DependentUpon>202008240939048_Create_Db.cs</DependentUpon>
-=======
     <EmbeddedResource Include="Hire\frmDayHire.resx">
       <DependentUpon>frmDayHire.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,10 +123,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008221955516_UpdateDb2.resx">
       <DependentUpon>202008221955516_UpdateDb2.cs</DependentUpon>
->>>>>>> Function 2 - Day tour hire calculation
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008230631192_CreateHire&amp;Package.resx">
       <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008290631362_EditStartTime.resx">
+      <DependentUpon>202008290631362_EditStartTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Package\frmPackage.resx">
       <DependentUpon>frmPackage.cs</DependentUpon>

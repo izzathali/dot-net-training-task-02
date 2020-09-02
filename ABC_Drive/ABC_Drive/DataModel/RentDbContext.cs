@@ -15,5 +15,6 @@ namespace ABC_Drive.Model
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<Package> Packages { get; set; }
         public DbSet<DayHire> DayHires { get; set; }
+        public DbSet<LongHire> LongHires { get; set; }
     }
 }

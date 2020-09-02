@@ -24,6 +24,7 @@ F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculati
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\EntityFramework.SqlServer.dll
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\EntityFramework.xml
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\EntityFramework.SqlServer.xml
+F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csprojAssemblyReference.cache
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Driver.frmDriver.resources
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.CreatDb.resources
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.UpdateDb2.resources
@@ -35,28 +36,6 @@ F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculati
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csproj.CopyComplete
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.exe
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.pdb
-<<<<<<< HEAD
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csprojAssemblyReference.cache
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\RentCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.UpdateLicence.resources
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\ABC_Drive.exe.config
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\ABC_Drive.exe
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\ABC_Drive.pdb
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\EntityFramework.dll
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\EntityFramework.SqlServer.dll
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\EntityFramework.xml
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\bin\Debug\EntityFramework.SqlServer.xml
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csprojAssemblyReference.cache
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Driver.frmDriver.resources
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Properties.Resources.resources
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Rent.frmRent.resources
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Vehicle.frmVehicle.resources
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csproj.GenerateResource.cache
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csproj.CoreCompileInputs.cache
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csproj.CopyComplete
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.exe
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.pdb
-F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\Error\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.Create_Db.resources
-=======
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.csprojAssemblyReference.cache
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Driver.frmDriver.resources
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.CreatDb.resources
@@ -79,4 +58,4 @@ F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCal
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.CreateHirePackage.resources
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Package.frmPackage.resources
 F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Hire.frmDayHire.resources
->>>>>>> Function 2 - Day tour hire calculation
+F:\Quadrate\Quadrate-asp-dot-net-training\dot-net-training-task-02\DayTouHireCalculation\dot-net-training-task-02\ABC_Drive\ABC_Drive\obj\Debug\ABC_Drive.Migrations.EditStartTime.resources

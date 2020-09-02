@@ -14,7 +14,7 @@ namespace ABC_Drive.Model
         [Required]
         public Package Packages { get; set; }
         [Required]
-        public TimeSpan StratTime { get; set; }
+        public TimeSpan StartTime { get; set; }
         [Required]
         public TimeSpan EndTime { get; set; }
         [Required]
