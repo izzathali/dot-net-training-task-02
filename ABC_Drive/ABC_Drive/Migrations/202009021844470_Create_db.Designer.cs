@@ -7,13 +7,13 @@ namespace ABC_Drive.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class UpdateRent : IMigrationMetadata
+    public sealed partial class Create_db : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateRent));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Create_db));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009021227372_UpdateRent"; }
+            get { return "202009021844470_Create_db"; }
         }
         
         string IMigrationMetadata.Source

@@ -49,7 +49,8 @@ namespace ABC_Drive.Driver
                     {
                         DriverName = txtDriverName.Text,
                         DriverCost = Convert.ToInt32(txtDriverCost.Text),
-                        LicenceType = cmbLicence.SelectedText
+                        LicenceType = cmbLicence.SelectedText,
+                        RatePerOverNight = Convert.ToInt32(txtRatePerOverNight.Text)
                     };
                     db.Drivers.Add(model);
                     db.SaveChanges();

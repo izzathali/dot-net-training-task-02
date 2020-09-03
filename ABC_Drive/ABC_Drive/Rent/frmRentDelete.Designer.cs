@@ -192,6 +192,7 @@
             this.btnAddVehicle.Text = "+";
             this.btnAddVehicle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAddVehicle.UseVisualStyleBackColor = true;
+            this.btnAddVehicle.Click += new System.EventHandler(this.btnAddVehicle_Click);
             // 
             // rbDriverNo
             // 
@@ -455,6 +456,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 518);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(710, 557);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(710, 557);
             this.Name = "frmRentDelete";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Delete Rent ";

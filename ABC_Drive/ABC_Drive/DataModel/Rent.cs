@@ -13,11 +13,8 @@ namespace ABC_Drive.Model
         [Key]
         public int RentId { get; set; }
         [Required]
-<<<<<<< HEAD
         public int VehicleId { get; set; }
-=======
-        public int VehicleId  { get; set; }
->>>>>>> 294df09dc5a725ee95fc4957f7035a231667bdaf
+        public Vehicle Vehicle  { get; set; }
         [Required]
         public DateTime RentedDate { get; set; }
         [Required]

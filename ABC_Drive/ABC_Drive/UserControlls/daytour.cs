@@ -33,7 +33,7 @@ namespace ABC_Drive.UserControlls
                                   select new
                                   {
                                       Package = Hire.Packages.PackageName,
-                                      StartTime = Hire.StratTime,
+                                      StartTime = Hire.StartTime,
                                       EndTime = Hire.EndTime,
                                       StartKm = Hire.StartKm,
                                       EndKm = Hire.EndKm,

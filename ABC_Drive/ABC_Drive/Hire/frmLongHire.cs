@@ -170,7 +170,8 @@ namespace ABC_Drive.Hire
 
         private void btnAddDriver_Click(object sender, EventArgs e)
         {
-            frmDriver frmD = new frmDriver();
+            
+            frmDriver frmD = new frmDriver(this.LoadcmbDriver);
             using (frmD)
             {
                 if (frmD.ShowDialog() == DialogResult.OK)

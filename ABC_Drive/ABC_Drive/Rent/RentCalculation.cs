@@ -20,9 +20,15 @@ namespace ABC_Drive.Rent
 
         public int CountDays(DateTime RentedDate , DateTime ReturnedDate)
         {
-            TimeSpan CountDays = ReturnedDate - RentedDate;
-            Days = Convert.ToInt32(CountDays.TotalDays);
-
+            if (RentedDate > ReturnedDate)
+            {
+                Days = 0;
+            }
+            else
+            {
+                TimeSpan CountDays = ReturnedDate - RentedDate;
+                Days = Convert.ToInt32(CountDays.TotalDays);
+            }
             return Days;
         }
         public int RatePerDay(int VehicleID)

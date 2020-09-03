@@ -21,10 +21,11 @@ namespace ABC_Drive.Rent
         Model.Rent model = new Model.Rent();
         private int VehicleID = 0;
         //int VehicleID;
-        
-        public frmRent()
+        private readonly Action _dataUpdate;
+        public frmRent(Action dataUpdate)
         {
             InitializeComponent();
+            _dataUpdate = dataUpdate;
         }
 
         private void frmRent_Load(object sender, EventArgs e)
@@ -46,38 +47,40 @@ namespace ABC_Drive.Rent
         }
         private void RentCalculation()
         {
-            
-            int VehiId = VehicleID;
-            string VehiNo = txtVehicleNo.Text;
-            DateTime RentedDate = dtpRentedDate.Value;
-            DateTime ReturnedDate = dtpReturnedDate.Value;
-            bool Driver = rbDriverYes.Checked;
-            string DriverName = cmbLoadDriver.Text;
+            if (db.Vehicles.Any(p => p.VehicleNo == txtVehicleNo.Text))
+            {
+                LoadVehicle();
+                int VehiId = VehicleID;
+                string VehiNo = txtVehicleNo.Text;
+                DateTime RentedDate = dtpRentedDate.Value;
+                DateTime ReturnedDate = dtpReturnedDate.Value;
+                bool Driver = rbDriverYes.Checked;
+                string DriverName = cmbLoadDriver.Text;
 
-            Rent.RentCalculation Cal = new RentCalculation();
-            int Days = Cal.CountDays(RentedDate, ReturnedDate);
-            int RatePerDay = Cal.RatePerDay(VehicleID);
-            int RatePerWeek = Cal.RatePerWeek(VehicleID);
-            int RatePerMonth = Cal.RatePerMonth(VehicleID);
-            int DriverRatePerDay = Cal.DriverRatePerDay(DriverName);
-            int TotDays = Cal.TotDays(Days);
-            int TotWeeks = Cal.TotWeeks(Days);
-            int TotMonths = Cal.TotMonths(Days);
-            int TotDaysAmnt = Cal.TotDaysAmount(TotDays,RatePerDay);
-            int TotWeeksAmnt = Cal.TotWeeksAmount(TotWeeks,RatePerWeek);
-            int TotMonthsAmnt = Cal.TotMonthsAmount(TotMonths, RatePerMonth);
-            int TotDriverCharge = Cal.TotDriverCharge(Days,DriverRatePerDay);
-            int TotRent = Cal.TotalRent(TotDaysAmnt,TotWeeksAmnt,TotMonthsAmnt,TotDriverCharge);
+                Rent.RentCalculation Cal = new RentCalculation();
+                int Days = Cal.CountDays(RentedDate, ReturnedDate);
+                int RatePerDay = Cal.RatePerDay(VehicleID);
+                int RatePerWeek = Cal.RatePerWeek(VehicleID);
+                int RatePerMonth = Cal.RatePerMonth(VehicleID);
+                int DriverRatePerDay = Cal.DriverRatePerDay(DriverName);
+                int TotDays = Cal.TotDays(Days);
+                int TotWeeks = Cal.TotWeeks(Days);
+                int TotMonths = Cal.TotMonths(Days);
+                int TotDaysAmnt = Cal.TotDaysAmount(TotDays, RatePerDay);
+                int TotWeeksAmnt = Cal.TotWeeksAmount(TotWeeks, RatePerWeek);
+                int TotMonthsAmnt = Cal.TotMonthsAmount(TotMonths, RatePerMonth);
+                int TotDriverCharge = Cal.TotDriverCharge(Days, DriverRatePerDay);
+                int TotRent = Cal.TotalRent(TotDaysAmnt, TotWeeksAmnt, TotMonthsAmnt, TotDriverCharge);
 
-            lblTotDays.Text = TotDays.ToString();
-            lblTotWeeks.Text = TotWeeks.ToString();
-            lblTotMonths.Text = TotMonths.ToString();
-            txtTotDaysAmnt.Text = TotDaysAmnt.ToString();
-            txtTotWeeksAmnt.Text = TotWeeksAmnt.ToString();
-            txtTotMonthsAmnt.Text = TotMonthsAmnt.ToString();
-            lblTotDriverCost.Text = TotDriverCharge.ToString();
-            lblTotRent.Text = TotRent.ToString();
-
+                lblTotDays.Text = TotDays.ToString();
+                lblTotWeeks.Text = TotWeeks.ToString();
+                lblTotMonths.Text = TotMonths.ToString();
+                txtTotDaysAmnt.Text = TotDaysAmnt.ToString();
+                txtTotWeeksAmnt.Text = TotWeeksAmnt.ToString();
+                txtTotMonthsAmnt.Text = TotMonthsAmnt.ToString();
+                lblTotDriverCost.Text = TotDriverCharge.ToString();
+                lblTotRent.Text = TotRent.ToString();
+            }
         }
 
         private void txtVehicleNo_TextChanged(object sender, EventArgs e)
@@ -156,7 +159,10 @@ namespace ABC_Drive.Rent
         }
         private void LoadVehicle()
         {
-
+            var Vehi = (from Vehicle in db.Vehicles
+                        where Vehicle.VehicleNo == txtVehicleNo.Text
+                        select Vehicle.VehicleId).FirstOrDefault();
+            VehicleID = Vehi;
         }
         private void btnAddVehicle_Click(object sender, EventArgs e)
         {
@@ -228,6 +234,7 @@ namespace ABC_Drive.Rent
                     RentCalculation();
                     SaveRent();
                     MessageBox.Show("Rent successfully saved");
+                    _dataUpdate();
                     this.Close();
                 }
                 else

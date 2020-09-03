@@ -38,8 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            //this.txtRatePerOverNight = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtRatePerOverNight = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +47,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel1.Controls.Add(this.txtRatePerOverNight);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.cmbLicence);
             this.panel1.Controls.Add(this.txtDriverCost);
@@ -57,7 +59,7 @@
             this.panel1.Location = new System.Drawing.Point(2, -3);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(826, 136);
+            this.panel1.Size = new System.Drawing.Size(576, 186);
             this.panel1.TabIndex = 0;
             // 
             // label3
@@ -82,23 +84,25 @@
             // 
             // txtDriverCost
             // 
-            this.txtDriverCost.Location = new System.Drawing.Point(569, 66);
+            this.txtDriverCost.Location = new System.Drawing.Point(70, 147);
             this.txtDriverCost.Name = "txtDriverCost";
             this.txtDriverCost.Size = new System.Drawing.Size(219, 26);
             this.txtDriverCost.TabIndex = 3;
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(1, 133);
+            this.panel2.Controls.Add(this.btnCancel);
+            this.panel2.Controls.Add(this.btnSave);
+            this.panel2.Location = new System.Drawing.Point(2, 183);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(821, 60);
+            this.panel2.Size = new System.Drawing.Size(576, 60);
             this.panel2.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(564, 37);
+            this.label2.Location = new System.Drawing.Point(65, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(151, 20);
             this.label2.TabIndex = 4;
@@ -122,7 +126,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(698, 145);
+            this.btnSave.Location = new System.Drawing.Point(432, 18);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(93, 29);
             this.btnSave.TabIndex = 4;
@@ -132,7 +136,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(596, 145);
+            this.btnCancel.Location = new System.Drawing.Point(331, 18);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 29);
             this.btnCancel.TabIndex = 5;
@@ -142,28 +146,27 @@
             // 
             // txtRatePerOverNight
             // 
-            //this.txtRatePerOverNight.Location = new System.Drawing.Point(70, 135);
-            //this.txtRatePerOverNight.Name = "txtRatePerOverNight";
-            //this.txtRatePerOverNight.Size = new System.Drawing.Size(219, 26);
-            //this.txtRatePerOverNight.TabIndex = 7;
+            this.txtRatePerOverNight.Location = new System.Drawing.Point(338, 147);
+            this.txtRatePerOverNight.Name = "txtRatePerOverNight";
+            this.txtRatePerOverNight.Size = new System.Drawing.Size(187, 26);
+            this.txtRatePerOverNight.TabIndex = 8;
             // 
-            // label3
+            // label4
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(65, 106);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Rate per over night:";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(333, 118);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(154, 20);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Rate Per Over Night:";
             // 
             // frmDriver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 186);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
+            this.ClientSize = new System.Drawing.Size(576, 242);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
@@ -191,5 +194,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbLicence;
+        private System.Windows.Forms.TextBox txtRatePerOverNight;
+        private System.Windows.Forms.Label label4;
     }
 }

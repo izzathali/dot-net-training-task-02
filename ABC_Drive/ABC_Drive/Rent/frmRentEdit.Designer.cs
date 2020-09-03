@@ -157,6 +157,7 @@
             this.dgvVehicleList.Size = new System.Drawing.Size(237, 71);
             this.dgvVehicleList.TabIndex = 14;
             this.dgvVehicleList.Visible = false;
+            this.dgvVehicleList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVehicleList_CellClick);
             // 
             // cmbLoadDriver
             // 
@@ -165,6 +166,8 @@
             this.cmbLoadDriver.Name = "cmbLoadDriver";
             this.cmbLoadDriver.Size = new System.Drawing.Size(161, 28);
             this.cmbLoadDriver.TabIndex = 7;
+            this.cmbLoadDriver.SelectedIndexChanged += new System.EventHandler(this.cmbLoadDriver_SelectedIndexChanged);
+            this.cmbLoadDriver.Click += new System.EventHandler(this.cmbLoadDriver_Click);
             // 
             // btnAddDriver
             // 
@@ -177,6 +180,7 @@
             this.btnAddDriver.Text = "+";
             this.btnAddDriver.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAddDriver.UseVisualStyleBackColor = true;
+            this.btnAddDriver.Click += new System.EventHandler(this.btnAddDriver_Click);
             // 
             // btnAddVehicle
             // 
@@ -189,6 +193,7 @@
             this.btnAddVehicle.Text = "+";
             this.btnAddVehicle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAddVehicle.UseVisualStyleBackColor = true;
+            this.btnAddVehicle.Click += new System.EventHandler(this.btnAddVehicle_Click);
             // 
             // rbDriverNo
             // 
@@ -234,6 +239,7 @@
             this.dtpReturnedDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtpReturnedDate.Size = new System.Drawing.Size(129, 26);
             this.dtpReturnedDate.TabIndex = 4;
+            this.dtpReturnedDate.ValueChanged += new System.EventHandler(this.dtpReturnedDate_ValueChanged);
             // 
             // dtpRentedDate
             // 
@@ -243,6 +249,7 @@
             this.dtpRentedDate.Name = "dtpRentedDate";
             this.dtpRentedDate.Size = new System.Drawing.Size(129, 26);
             this.dtpRentedDate.TabIndex = 3;
+            this.dtpRentedDate.ValueChanged += new System.EventHandler(this.dtpRentedDate_ValueChanged);
             // 
             // label2
             // 
@@ -261,6 +268,7 @@
             this.txtVehicleNo.Name = "txtVehicleNo";
             this.txtVehicleNo.Size = new System.Drawing.Size(184, 26);
             this.txtVehicleNo.TabIndex = 1;
+            this.txtVehicleNo.TextChanged += new System.EventHandler(this.txtVehicleNo_TextChanged);
             // 
             // label6
             // 
@@ -449,6 +457,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 519);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(713, 558);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(713, 558);
             this.Name = "frmRentEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Rent";

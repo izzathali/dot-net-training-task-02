@@ -36,7 +36,7 @@ namespace ABC_Drive.UserControlls
                                select new
                                {
                                    RentId = Rent.RentId,
-                                   Vehicle = Rent.VehicleId,
+                                   Vehicle = Rent.Vehicle.VehicleNo,
                                    RentedDate = Rent.RentedDate,
                                    ReturnedDate = Rent.ReturnedDate,
                                    Driver = Rent.Driver.DriverName,
@@ -50,6 +50,8 @@ namespace ABC_Drive.UserControlls
                     bs.DataSource = rent.ToList();
                     dgvRent.DataSource = bs;
                     dgvRent.Columns[0].Visible = false;
+                    dgvRent.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
+                    dgvRent.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
                 }
             }
             catch (Exception ex)
@@ -60,7 +62,7 @@ namespace ABC_Drive.UserControlls
         }
         private void btnAddRent_Click(object sender, EventArgs e)
         {
-            frmRent rent = new frmRent();
+            frmRent rent = new frmRent(this.LoadData);
             using (rent)
             {
                 if (rent.ShowDialog() == DialogResult.OK)
@@ -75,16 +77,19 @@ namespace ABC_Drive.UserControlls
         {
             try
             {
-                frmRentEdit rentEdit = new frmRentEdit();
-                using (rentEdit)
+                if (dgvRent.RowCount > 0)
                 {
-                    if (dgvRent.CurrentRow.Index != -1 || dgvRent.CurrentRow.Index > 0)
+                    frmRentEdit rentEdit = new frmRentEdit(this.LoadData);
+                    using (rentEdit)
                     {
-                        int indx = dgvRent.CurrentRow.Index;
-                        rentEdit.dgvr = dgvRent.Rows[indx];
-                        if (rentEdit.ShowDialog() == DialogResult.OK)
+                        if (dgvRent.CurrentRow.Index != -1 || dgvRent.CurrentRow.Index > 0)
                         {
+                            int indx = dgvRent.CurrentRow.Index;
+                            rentEdit.dgvr = dgvRent.Rows[indx];
+                            if (rentEdit.ShowDialog() == DialogResult.OK)
+                            {
 
+                            }
                         }
                     }
                 }
@@ -99,16 +104,73 @@ namespace ABC_Drive.UserControlls
         {
             try
             {
-                frmRentDelete rentDelete = new frmRentDelete();
-                using (rentDelete)
+                if (dgvRent.RowCount > 0)
                 {
-                    if (dgvRent.CurrentRow.Index != -1 || dgvRent.CurrentRow.Index > 0)
+                    frmRentDelete rentDelete = new frmRentDelete(this.LoadData); ;
+                    using (rentDelete)
                     {
-                        int indx = dgvRent.CurrentRow.Index;
-                        rentDelete.dgvr = dgvRent.Rows[indx];
-                        if (rentDelete.ShowDialog() == DialogResult.OK)
+                        if (dgvRent.CurrentRow.Index != -1 || dgvRent.CurrentRow.Index > 0)
                         {
+                            int indx = dgvRent.CurrentRow.Index;
+                            rentDelete.dgvr = dgvRent.Rows[indx];
+                            if (rentDelete.ShowDialog() == DialogResult.OK)
+                            {
 
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvRent.RowCount > 0)
+                {
+                    frmRentEdit rentEdit = new frmRentEdit(this.LoadData);
+                    using (rentEdit)
+                    {
+                        if (dgvRent.CurrentRow.Index != -1 || dgvRent.CurrentRow.Index > 0)
+                        {
+                            int indx = dgvRent.CurrentRow.Index;
+                            rentEdit.dgvr = dgvRent.Rows[indx];
+                            if (rentEdit.ShowDialog() == DialogResult.OK)
+                            {
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvRent.RowCount > 0)
+                {
+                    frmRentDelete rentDelete = new frmRentDelete(this.LoadData); ;
+                    using (rentDelete)
+                    {
+                        if (dgvRent.CurrentRow.Index != -1 || dgvRent.CurrentRow.Index > 0)
+                        {
+                            int indx = dgvRent.CurrentRow.Index;
+                            rentDelete.dgvr = dgvRent.Rows[indx];
+                            if (rentDelete.ShowDialog() == DialogResult.OK)
+                            {
+
+                            }
                         }
                     }
                 }

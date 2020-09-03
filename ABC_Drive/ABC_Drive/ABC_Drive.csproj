@@ -89,29 +89,9 @@
       <DependentUpon>frmLongHire.cs</DependentUpon>
     </Compile>
     <Compile Include="Hire\LongTourHireCalculation.cs" />
-    <Compile Include="Migrations\202008302013543_CreateDb.cs" />
-    <Compile Include="Migrations\202008302013543_CreateDb.designer.cs">
-      <DependentUpon>202008302013543_CreateDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009021227372_UpdateRent.cs" />
-    <Compile Include="Migrations\202009021227372_UpdateRent.designer.cs">
-      <DependentUpon>202009021227372_UpdateRent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.cs" />
-    <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.designer.cs">
-      <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008270624395_CreateLongHire.cs" />
-    <Compile Include="Migrations\202008270624395_CreateLongHire.designer.cs">
-      <DependentUpon>202008270624395_CreateLongHire.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.cs" />
-    <Compile Include="Migrations\202008230631192_CreateHire&amp;Package.designer.cs">
-      <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008290631362_EditStartTime.cs" />
-    <Compile Include="Migrations\202008290631362_EditStartTime.designer.cs">
-      <DependentUpon>202008290631362_EditStartTime.cs</DependentUpon>
+    <Compile Include="Migrations\202009021844470_Create_db.cs" />
+    <Compile Include="Migrations\202009021844470_Create_db.designer.cs">
+      <DependentUpon>202009021844470_Create_db.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Package\frmPackage.cs">
@@ -177,23 +157,8 @@
     <EmbeddedResource Include="Hire\frmLongHire.resx">
       <DependentUpon>frmLongHire.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008302013543_CreateDb.resx">
-      <DependentUpon>202008302013543_CreateDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009021227372_UpdateRent.resx">
-      <DependentUpon>202009021227372_UpdateRent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008230631192_CreateHire&amp;Package.resx">
-      <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008270624395_CreateLongHire.resx">
-      <DependentUpon>202008270624395_CreateLongHire.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008230631192_CreateHire&amp;Package.resx">
-      <DependentUpon>202008230631192_CreateHire&amp;Package.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008290631362_EditStartTime.resx">
-      <DependentUpon>202008290631362_EditStartTime.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009021844470_Create_db.resx">
+      <DependentUpon>202009021844470_Create_db.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Package\frmPackage.resx">
       <DependentUpon>frmPackage.cs</DependentUpon>
@@ -242,9 +207,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Hire\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
