@@ -16,10 +16,11 @@ namespace ABC_Drive.Hire
     {
         RentDbContext db = new RentDbContext();
         Model.DayHire model = new DayHire();
-        
-        public frmDayHire()
+        private readonly Action _dataUpdate;
+        public frmDayHire(Action dataUpdate)
         {
             InitializeComponent();
+            _dataUpdate = dataUpdate;
         }
         private void frmDayHire_Load(object sender, EventArgs e)
         {
@@ -228,7 +229,8 @@ namespace ABC_Drive.Hire
                 DayTourHireCalculation();
                 SaveDayHire();
                 MessageBox.Show("Day hire record successfully saved.");
-                ClearText();
+                _dataUpdate();
+                this.Close();
             }
         }
         private void SaveDayHire()
@@ -260,6 +262,11 @@ namespace ABC_Drive.Hire
                 }
             }
             LoadcmbVehicle();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

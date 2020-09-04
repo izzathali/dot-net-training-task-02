@@ -12,7 +12,8 @@ namespace ABC_Drive.Model
         [Key]
         public int HireId { get; set; }
         [Required]
-        public Package Packages { get; set; }
+        public int PackageId { get; set; }
+        public virtual Package Packages { get; set; }
         [Required]
         public TimeSpan StartTime { get; set; }
         [Required]
