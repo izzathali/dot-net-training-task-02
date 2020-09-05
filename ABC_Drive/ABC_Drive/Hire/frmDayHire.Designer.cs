@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddPackage = new System.Windows.Forms.Button();
             this.cmbPackageName = new System.Windows.Forms.ComboBox();
             this.btnAddVehicle = new System.Windows.Forms.Button();
             this.cmbVehicleNo = new System.Windows.Forms.ComboBox();
@@ -59,7 +60,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnAddPackage = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -83,6 +83,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(704, 133);
             this.panel1.TabIndex = 1;
+            // 
+            // btnAddPackage
+            // 
+            this.btnAddPackage.Location = new System.Drawing.Point(606, 51);
+            this.btnAddPackage.Name = "btnAddPackage";
+            this.btnAddPackage.Size = new System.Drawing.Size(28, 28);
+            this.btnAddPackage.TabIndex = 4;
+            this.btnAddPackage.Text = "+";
+            this.btnAddPackage.UseVisualStyleBackColor = true;
+            this.btnAddPackage.Click += new System.EventHandler(this.btnAddPackage_Click);
             // 
             // cmbPackageName
             // 
@@ -385,6 +395,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -395,16 +406,6 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnAddPackage
-            // 
-            this.btnAddPackage.Location = new System.Drawing.Point(606, 51);
-            this.btnAddPackage.Name = "btnAddPackage";
-            this.btnAddPackage.Size = new System.Drawing.Size(28, 28);
-            this.btnAddPackage.TabIndex = 4;
-            this.btnAddPackage.Text = "+";
-            this.btnAddPackage.UseVisualStyleBackColor = true;
-            this.btnAddPackage.Click += new System.EventHandler(this.btnAddPackage_Click);
             // 
             // frmDayHire
             // 

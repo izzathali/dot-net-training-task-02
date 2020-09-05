@@ -82,6 +82,12 @@
     <Compile Include="Hire\frmDayHire.Designer.cs">
       <DependentUpon>frmDayHire.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hire\frmDayHireEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hire\frmDayHireEdit.Designer.cs">
+      <DependentUpon>frmDayHireEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hire\frmLongHire.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,10 @@
     <Compile Include="Migrations\202009021844470_Create_db.cs" />
     <Compile Include="Migrations\202009021844470_Create_db.designer.cs">
       <DependentUpon>202009021844470_Create_db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009041726034_UpdatePackageId.cs" />
+    <Compile Include="Migrations\202009041726034_UpdatePackageId.designer.cs">
+      <DependentUpon>202009041726034_UpdatePackageId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Package\frmPackage.cs">
@@ -154,11 +164,17 @@
     <EmbeddedResource Include="Hire\frmDayHire.resx">
       <DependentUpon>frmDayHire.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Hire\frmDayHireEdit.resx">
+      <DependentUpon>frmDayHireEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hire\frmLongHire.resx">
       <DependentUpon>frmLongHire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009021844470_Create_db.resx">
       <DependentUpon>202009021844470_Create_db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009041726034_UpdatePackageId.resx">
+      <DependentUpon>202009041726034_UpdatePackageId.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Package\frmPackage.resx">
       <DependentUpon>frmPackage.cs</DependentUpon>
