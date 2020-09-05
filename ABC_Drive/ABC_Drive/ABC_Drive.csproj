@@ -94,6 +94,12 @@
     <Compile Include="Hire\frmLongHire.Designer.cs">
       <DependentUpon>frmLongHire.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hire\frmLongHireEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hire\frmLongHireEdit.Designer.cs">
+      <DependentUpon>frmLongHireEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hire\LongTourHireCalculation.cs" />
     <Compile Include="Migrations\202009021844470_Create_db.cs" />
     <Compile Include="Migrations\202009021844470_Create_db.designer.cs">
@@ -102,6 +108,10 @@
     <Compile Include="Migrations\202009041726034_UpdatePackageId.cs" />
     <Compile Include="Migrations\202009041726034_UpdatePackageId.designer.cs">
       <DependentUpon>202009041726034_UpdatePackageId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009050617393_UpdateLongHire.cs" />
+    <Compile Include="Migrations\202009050617393_UpdateLongHire.designer.cs">
+      <DependentUpon>202009050617393_UpdateLongHire.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Package\frmPackage.cs">
@@ -170,11 +180,17 @@
     <EmbeddedResource Include="Hire\frmLongHire.resx">
       <DependentUpon>frmLongHire.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Hire\frmLongHireEdit.resx">
+      <DependentUpon>frmLongHireEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009021844470_Create_db.resx">
       <DependentUpon>202009021844470_Create_db.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009041726034_UpdatePackageId.resx">
       <DependentUpon>202009041726034_UpdatePackageId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009050617393_UpdateLongHire.resx">
+      <DependentUpon>202009050617393_UpdateLongHire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Package\frmPackage.resx">
       <DependentUpon>frmPackage.cs</DependentUpon>
