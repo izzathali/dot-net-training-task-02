@@ -28,17 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDeleteLongTour = new System.Windows.Forms.Button();
+            this.btnEditLongTour = new System.Windows.Forms.Button();
             this.btnAddLongTour = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvLongTour = new System.Windows.Forms.DataGridView();
-            this.btnEditLongTour = new System.Windows.Forms.Button();
-            this.btnDeleteLongTour = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLongTour)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -68,6 +75,28 @@
             this.panel1.Size = new System.Drawing.Size(710, 39);
             this.panel1.TabIndex = 0;
             // 
+            // btnDeleteLongTour
+            // 
+            this.btnDeleteLongTour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteLongTour.Location = new System.Drawing.Point(270, 4);
+            this.btnDeleteLongTour.Name = "btnDeleteLongTour";
+            this.btnDeleteLongTour.Size = new System.Drawing.Size(144, 31);
+            this.btnDeleteLongTour.TabIndex = 2;
+            this.btnDeleteLongTour.Text = "Delete Long Tour";
+            this.btnDeleteLongTour.UseVisualStyleBackColor = true;
+            this.btnDeleteLongTour.Click += new System.EventHandler(this.btnDeleteLongTour_Click);
+            // 
+            // btnEditLongTour
+            // 
+            this.btnEditLongTour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditLongTour.Location = new System.Drawing.Point(138, 4);
+            this.btnEditLongTour.Name = "btnEditLongTour";
+            this.btnEditLongTour.Size = new System.Drawing.Size(126, 31);
+            this.btnEditLongTour.TabIndex = 1;
+            this.btnEditLongTour.Text = "Edit Long Tour";
+            this.btnEditLongTour.UseVisualStyleBackColor = true;
+            this.btnEditLongTour.Click += new System.EventHandler(this.btnEditLongTour_Click);
+            // 
             // btnAddLongTour
             // 
             this.btnAddLongTour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -90,36 +119,48 @@
             // 
             // dgvLongTour
             // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvLongTour.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLongTour.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvLongTour.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLongTour.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLongTour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLongTour.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvLongTour.Location = new System.Drawing.Point(0, 0);
             this.dgvLongTour.Name = "dgvLongTour";
             this.dgvLongTour.Size = new System.Drawing.Size(710, 422);
             this.dgvLongTour.TabIndex = 0;
             // 
-            // btnEditLongTour
+            // contextMenuStrip1
             // 
-            this.btnEditLongTour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditLongTour.Location = new System.Drawing.Point(138, 4);
-            this.btnEditLongTour.Name = "btnEditLongTour";
-            this.btnEditLongTour.Size = new System.Drawing.Size(126, 31);
-            this.btnEditLongTour.TabIndex = 1;
-            this.btnEditLongTour.Text = "Edit Long Tour";
-            this.btnEditLongTour.UseVisualStyleBackColor = true;
-            this.btnEditLongTour.Click += new System.EventHandler(this.btnEditLongTour_Click);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
             // 
-            // btnDeleteLongTour
+            // editToolStripMenuItem
             // 
-            this.btnDeleteLongTour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteLongTour.Location = new System.Drawing.Point(270, 4);
-            this.btnDeleteLongTour.Name = "btnDeleteLongTour";
-            this.btnDeleteLongTour.Size = new System.Drawing.Size(144, 31);
-            this.btnDeleteLongTour.TabIndex = 2;
-            this.btnDeleteLongTour.Text = "Delete Long Tour";
-            this.btnDeleteLongTour.UseVisualStyleBackColor = true;
-            this.btnDeleteLongTour.Click += new System.EventHandler(this.btnDeleteLongTour_Click);
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // longhire
             // 
@@ -133,6 +174,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLongTour)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -146,5 +188,8 @@
         private System.Windows.Forms.DataGridView dgvLongTour;
         private System.Windows.Forms.Button btnDeleteLongTour;
         private System.Windows.Forms.Button btnEditLongTour;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

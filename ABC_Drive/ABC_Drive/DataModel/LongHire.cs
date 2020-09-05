@@ -12,7 +12,8 @@ namespace ABC_Drive.Model
         [Key]
         public int HireId { get; set; }
         [Required]
-        public Package Packages { get; set; }
+        public int PackageId { get; set; }
+        public virtual Package Packages { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
         [Required]
@@ -21,7 +22,8 @@ namespace ABC_Drive.Model
         public int StartKm { get; set; }
         [Required]
         public int EndKm { get; set; }
-        public Driver Driver { get; set; }
+        public int? DriverId { get; set; }
+        public virtual Driver Driver { get; set; }
         public int TotDriverCharge { get; set; }
         [Required]
         public int HireCharge { get; set; }

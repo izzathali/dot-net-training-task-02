@@ -12,37 +12,60 @@ using System.Windows.Forms;
 
 namespace ABC_Drive.Hire
 {
-    public partial class frmLongHire : Form
+    public partial class frmLongHireEdit : Form
     {
         RentDbContext db = new RentDbContext();
-        Model.LongHire model = new LongHire();
-        private readonly Action _dataUpdate;
         public DataGridViewRow dgvr;
-
-        public frmLongHire(Action dataUpdate)
+        private int HireID = 0;
+        private readonly Action _dataUpdate;
+        public frmLongHireEdit(Action dataUpdate)
         {
             InitializeComponent();
             _dataUpdate = dataUpdate;
         }
 
-        private void frmLongHire_Load(object sender, EventArgs e)
+        private void frmLongHireEdit_Load(object sender, EventArgs e)
         {
             dtpStartDate.CustomFormat = "dd-MM-yyyy";
             dtpEndDate.CustomFormat = "dd-MM-yyyy";
-            rbDriverNo.Checked = true;
             LoadcmbVehicle();
+            LoadcmbPackage();
             LoadcmbDriver();
+            LoadDataFromLongHire();
+            LongTourHireCalculation();
+        }
+        private void LoadDataFromLongHire()
+        {
+            HireID = int.Parse(dgvr.Cells[0].Value.ToString());
+            cmbVehicleNo.Text = dgvr.Cells[1].Value.ToString();
+            cmbPackageName.Text = dgvr.Cells[2].Value.ToString();
+            dtpStartDate.Value = DateTime.Parse(dgvr.Cells[3].Value.ToString());
+            dtpEndDate.Value = DateTime.Parse(dgvr.Cells[4].Value.ToString());
+            txtStartKm.Text = dgvr.Cells[5].Value.ToString();
+            txtEndKm.Text = dgvr.Cells[6].Value.ToString();
+            if (db.LongHires.Any(u => u.HireId == HireID && u.DriverId == null))
+            {
+                rbDriverNo.Checked = true;
+            }
+            else
+            {
+                cmbDriverName.Text = dgvr.Cells[7].Value.ToString();
+                rbDriverYes.Checked = true;
+            }
+            lblDriverOverNight.Text = dgvr.Cells[8].Value.ToString();
+            txtHireCharge.Text = dgvr.Cells[9].Value.ToString();
+            txtNightStayCharge.Text = dgvr.Cells[10].Value.ToString();
+            txtExtraKmCharge.Text = dgvr.Cells[11].Value.ToString();
+            lblTotalHireCharge.Text = dgvr.Cells[12].Value.ToString();
         }
         private void LoadcmbVehicle()
         {
-            
             var Vehi = from Vehicle in db.Vehicles select Vehicle;
 
             cmbVehicleNo.DataSource = Vehi.ToList();
             cmbVehicleNo.DisplayMember = "VehicleNo";
             cmbVehicleNo.ValueMember = "VehicleId";
             cmbVehicleNo.SelectedIndex = -1;
-                
         }
         private void LoadcmbPackage()
         {
@@ -66,56 +89,6 @@ namespace ABC_Drive.Hire
             cmbDriverName.ValueMember = "Id";
             cmbDriverName.SelectedIndex = -1;
         }
-        private void ClearText()
-        {
-            dtpStartDate.Value = DateTime.Today;
-            dtpEndDate.Value = DateTime.Today;
-            txtStartKm.Clear();
-            txtEndKm.Clear();
-            txtHireCharge.Clear();
-            txtNightStayCharge.Clear();
-            txtExtraKmCharge.Clear();
-            lblDriverOverNight.Text = "0";
-            lblVehicleNightPark.Text = "0";
-            lblOverNightStay.Text = "0";
-            lblExtraKm.Text = "0";
-            lblTotalHireCharge.Text = "0";
-            rbDriverNo.Checked = true;
-            cmbPackageName.Text = "";
-            cmbDriverName.Text = "";
-            
-        }
-        private void cmbVehicleNo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadcmbPackage();
-            ClearText();
-        }
-
-        private void btnAddVehicle_Click(object sender, EventArgs e)
-        {
-            Vehicle.frmVehicle frmV = new Vehicle.frmVehicle(this.LoadcmbVehicle);
-            using (frmV)
-            {
-                if (frmV.ShowDialog() == DialogResult.OK)
-                {
-
-                }
-            }
-        }
-
-        private void btnAddPackage_Click(object sender, EventArgs e)
-        {
-            
-            Package.frmPackage frmP = new Package.frmPackage(this.LoadcmbPackage);
-            using (frmP)
-            {
-                if (frmP.ShowDialog() == DialogResult.OK)
-                {
-
-                }
-            }
-            LoadcmbVehicle();
-        }
         private void LongTourHireCalculation()
         {
             string _cmbVehicleNo = cmbVehicleNo.Text;
@@ -127,13 +100,10 @@ namespace ABC_Drive.Hire
             bool _DriverCked = rbDriverNo.Checked;
             string _cmbDriverName = cmbDriverName.Text;
 
-            /*
-            LongTourHireCalculation Cal = new LongTourHireCalculation(_cmbVehicleNo,_cmbPackage,_StartDate,_EndDate,_StartKm,
-                _EndKm,_DriverCked,_cmbDriverName);*/
             LongTourHireCalculation Cal = new LongTourHireCalculation();
 
-            int StayOverNights = Cal.StayOverNights(_StartDate,_EndDate);
-            lblOverNightStay.Text = StayOverNights.ToString()+":nts";
+            int StayOverNights = Cal.StayOverNights(_StartDate, _EndDate);
+            lblOverNightStay.Text = StayOverNights.ToString() + ":nts";
 
             int TotDriverOvrNightRate = Cal.TotalDriverOverNightRate(_cmbDriverName);
             lblDriverOverNight.Text = TotDriverOvrNightRate.ToString();
@@ -141,10 +111,10 @@ namespace ABC_Drive.Hire
             int TotVehiNightParkRate = Cal.TotalVehicleNightPark(_cmbVehicleNo);
             lblVehicleNightPark.Text = TotVehiNightParkRate.ToString();
 
-            int TotalNightStayCharge = Cal.TotalNightStayCharge(TotDriverOvrNightRate,TotVehiNightParkRate);
+            int TotalNightStayCharge = Cal.TotalNightStayCharge(TotDriverOvrNightRate, TotVehiNightParkRate);
             txtNightStayCharge.Text = TotalNightStayCharge.ToString();
 
-            int CalExtraKm = Cal.CalExtraKm(_StartKm, _EndKm, _cmbVehicleNo,_cmbPackage);
+            int CalExtraKm = Cal.CalExtraKm(_StartKm, _EndKm, _cmbVehicleNo, _cmbPackage);
             lblExtraKm.Text = CalExtraKm.ToString() + ":km";
 
             int ExtraKmCharge = Cal.ExtraKmCharge(CalExtraKm, _cmbVehicleNo, _cmbPackage);
@@ -157,12 +127,12 @@ namespace ABC_Drive.Hire
             lblTotalHireCharge.Text = TotalHireCharge.ToString();
         }
 
-        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        private void cmbVehicleNo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LongTourHireCalculation();
+            LoadcmbPackage();
         }
 
-        private void cmbPackageName_SelectedIndexChanged(object sender, EventArgs e)
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
         {
             LongTourHireCalculation();
         }
@@ -172,26 +142,12 @@ namespace ABC_Drive.Hire
             LongTourHireCalculation();
         }
 
-        private void btnAddDriver_Click(object sender, EventArgs e)
-        {
-            
-            frmDriver frmD = new frmDriver(this.LoadcmbDriver);
-            using (frmD)
-            {
-                if (frmD.ShowDialog() == DialogResult.OK)
-                {
-
-                }
-            }
-            LoadcmbDriver();
-        }
-
-        private void cmbDriverName_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbPackageName_SelectedIndexChanged(object sender, EventArgs e)
         {
             LongTourHireCalculation();
         }
 
-        private void txtEndKm_TextChanged(object sender, EventArgs e)
+        private void cmbDriverName_SelectedIndexChanged(object sender, EventArgs e)
         {
             LongTourHireCalculation();
         }
@@ -201,23 +157,15 @@ namespace ABC_Drive.Hire
             LongTourHireCalculation();
         }
 
-        private void rbDriverYes_Click(object sender, EventArgs e)
+        private void txtEndKm_TextChanged(object sender, EventArgs e)
         {
-            if (cmbVehicleNo.Text == String.Empty)
-            {
-                MessageBox.Show("Please select a Vehicle No first.");
-                rbDriverNo.Checked = true;
-            }
-            else
-            {
-                cmbDriverName.Enabled = true;
-                btnAddDriver.Enabled = true;
-            }
+            LongTourHireCalculation();
         }
 
-        private void rbDriverNo_Click(object sender, EventArgs e)
+        private void rbDriverYes_Click(object sender, EventArgs e)
         {
-            
+            cmbDriverName.Enabled = true;
+            btnAddDriver.Enabled = true;
         }
 
         private void rbDriverNo_CheckedChanged(object sender, EventArgs e)
@@ -227,7 +175,7 @@ namespace ABC_Drive.Hire
             cmbDriverName.SelectedIndex = -1;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
             LongTourHireCalculation();
             if (cmbVehicleNo.SelectedIndex == -1)
@@ -250,54 +198,89 @@ namespace ABC_Drive.Hire
             {
                 MessageBox.Show("Please type End km");
             }
-            else if(rbDriverYes.Checked == true && cmbDriverName.SelectedIndex == -1)
+            else if (rbDriverYes.Checked == true && cmbDriverName.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select Driver.");
             }
             else
             {
-                LongTourHireCalculation();
-                SaveLongHire();
+                LongHireUpdate();
                 MessageBox.Show("Long hire record successfully saved.");
                 _dataUpdate();
                 this.Close();
             }
         }
-        private void SaveLongHire()
+        private void LongHireUpdate()
         {
-            try
-            {
-                var Pckg = (from Pck in db.Packages
-                            where Pck.PackageName == cmbPackageName.Text && Pck.Vehicle.VehicleNo == cmbVehicleNo.Text
-                            select Pck).FirstOrDefault();
+            var LongHire = db.LongHires.First(i => i.HireId == HireID);
 
-                Model.LongHire model = new LongHire()
-                {
-                    Packages = Pckg,
-                    StartDate = dtpStartDate.Value,
-                    EndDate = dtpEndDate.Value,
-                    StartKm = Convert.ToInt32(txtStartKm.Text),
-                    EndKm = Convert.ToInt32(txtEndKm.Text),
-                    Driver = (Model.Driver)cmbDriverName.SelectedItem,
-                    TotDriverCharge = Convert.ToInt32(lblDriverOverNight.Text),
-                    HireCharge = Convert.ToInt32(txtHireCharge.Text),
-                    OvernightStayCharge = Convert.ToInt32(txtNightStayCharge.Text),
-                    ExtraKmCharge = Convert.ToInt32(txtExtraKmCharge.Text),
-                    TotalHireCharge = Convert.ToInt32(lblTotalHireCharge.Text)
-                };
-                db.LongHires.Add(model);
-                db.SaveChanges();
-            }
-            catch (Exception ex)
+            var Pckg = (from Pck in db.Packages
+                        where Pck.PackageName == cmbPackageName.Text && Pck.Vehicle.VehicleNo == cmbVehicleNo.Text
+                        select Pck).FirstOrDefault();
+
+            LongHire.Packages = Pckg;
+            LongHire.StartDate = dtpStartDate.Value;
+            LongHire.EndDate = dtpEndDate.Value;
+            LongHire.StartKm = Convert.ToInt32(txtStartKm.Text);
+            LongHire.EndKm = Convert.ToInt32(txtEndKm.Text);
+            if (rbDriverNo.Checked != true)
             {
-                MessageBox.Show(ex.Message);
+                LongHire.Driver = (Model.Driver)cmbDriverName.SelectedItem;
             }
-            
+            else
+            {
+                LongHire.Driver = null;
+            }
+            LongHire.TotDriverCharge = Convert.ToInt32(lblDriverOverNight.Text);
+            LongHire.HireCharge = Convert.ToInt32(txtHireCharge.Text);
+            LongHire.OvernightStayCharge = Convert.ToInt32(txtNightStayCharge.Text);
+            LongHire.ExtraKmCharge = Convert.ToInt32(txtExtraKmCharge.Text);
+            LongHire.TotalHireCharge = Convert.ToInt32(lblTotalHireCharge.Text);
+
+            db.SaveChanges();
+
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddVehicle_Click(object sender, EventArgs e)
+        {
+            Vehicle.frmVehicle frmV = new Vehicle.frmVehicle(this.LoadcmbVehicle);
+            using (frmV)
+            {
+                if (frmV.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+
+        private void btnAddPackage_Click(object sender, EventArgs e)
+        {
+            Package.frmPackage frmP = new Package.frmPackage(this.LoadcmbPackage);
+            using (frmP)
+            {
+                if (frmP.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+            LoadcmbVehicle();
+        }
+
+        private void btnAddDriver_Click(object sender, EventArgs e)
+        {
+            frmDriver frmD = new frmDriver(this.LoadcmbDriver);
+            using (frmD)
+            {
+                if (frmD.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+            LoadcmbDriver();
         }
     }
 }

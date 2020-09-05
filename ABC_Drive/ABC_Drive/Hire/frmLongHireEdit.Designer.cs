@@ -1,6 +1,6 @@
 ﻿namespace ABC_Drive.Hire
 {
-    partial class frmLongHire
+    partial class frmLongHireEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -69,7 +69,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -92,8 +92,8 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(699, 133);
-            this.panel1.TabIndex = 2;
+            this.panel1.Size = new System.Drawing.Size(701, 144);
+            this.panel1.TabIndex = 3;
             // 
             // btnAddVehicle
             // 
@@ -159,10 +159,10 @@
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(0, 133);
+            this.panel2.Location = new System.Drawing.Point(0, 139);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(706, 485);
-            this.panel2.TabIndex = 3;
+            this.panel2.Size = new System.Drawing.Size(706, 502);
+            this.panel2.TabIndex = 4;
             // 
             // groupBox4
             // 
@@ -191,7 +191,6 @@
             this.rbDriverNo.Text = "No";
             this.rbDriverNo.UseVisualStyleBackColor = true;
             this.rbDriverNo.CheckedChanged += new System.EventHandler(this.rbDriverNo_CheckedChanged);
-            this.rbDriverNo.Click += new System.EventHandler(this.rbDriverNo_Click);
             // 
             // rbDriverYes
             // 
@@ -509,13 +508,13 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.btnCancel);
-            this.panel3.Controls.Add(this.btnSave);
+            this.panel3.Controls.Add(this.btnUpdate);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(0, 617);
+            this.panel3.Location = new System.Drawing.Point(0, 637);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(699, 65);
-            this.panel3.TabIndex = 4;
+            this.panel3.Size = new System.Drawing.Size(701, 65);
+            this.panel3.TabIndex = 5;
             // 
             // btnCancel
             // 
@@ -527,32 +526,32 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnSave
+            // btnUpdate
             // 
-            this.btnSave.Location = new System.Drawing.Point(552, 24);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(86, 29);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnUpdate.Location = new System.Drawing.Point(552, 24);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(86, 29);
+            this.btnUpdate.TabIndex = 0;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // frmLongHire
+            // frmLongHireEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 682);
+            this.ClientSize = new System.Drawing.Size(701, 702);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(715, 721);
+            this.MaximumSize = new System.Drawing.Size(717, 741);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(715, 721);
-            this.Name = "frmLongHire";
+            this.MinimumSize = new System.Drawing.Size(717, 741);
+            this.Name = "frmLongHireEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Long Tour Hire Calculation";
-            this.Load += new System.EventHandler(this.frmLongHire_Load);
+            this.Text = "Long Hire Edit";
+            this.Load += new System.EventHandler(this.frmLongHireEdit_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -572,13 +571,25 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnAddVehicle;
         private System.Windows.Forms.ComboBox cmbPackageName;
         private System.Windows.Forms.Button btnAddPackage;
         private System.Windows.Forms.ComboBox cmbVehicleNo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton rbDriverNo;
+        private System.Windows.Forms.RadioButton rbDriverYes;
+        private System.Windows.Forms.Button btnAddDriver;
+        private System.Windows.Forms.ComboBox cmbDriverName;
+        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label lblVehicleNightPark;
+        private System.Windows.Forms.Label lblDriverOverNight;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtHireCharge;
         private System.Windows.Forms.Label lblTotalHireCharge;
         private System.Windows.Forms.Label lblOverNightStay;
         private System.Windows.Forms.Label lblExtraKm;
@@ -594,24 +605,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.DateTimePicker dtpStartDate;
-        private System.Windows.Forms.DateTimePicker dtpEndDate;
-        private System.Windows.Forms.Button btnAddVehicle;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox cmbDriverName;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnAddDriver;
-        private System.Windows.Forms.TextBox txtHireCharge;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lblDriverOverNight;
-        private System.Windows.Forms.Label lblVehicleNightPark;
-        private System.Windows.Forms.RadioButton rbDriverNo;
-        private System.Windows.Forms.RadioButton rbDriverYes;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
