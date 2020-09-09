@@ -129,7 +129,7 @@ namespace ABC_Drive.Hire
                     PdfWriter writer = new PdfWriter(sfd.FileName);
                     var pdf = new PdfDocument(writer);
                     Document document = new Document(pdf, iText.Kernel.Geom.PageSize.A4);
-                    Paragraph header = new Paragraph("Rent Records").SetTextAlignment(TextAlignment.CENTER).SetFontSize(15);
+                    Paragraph header = new Paragraph("Day tour Records").SetTextAlignment(TextAlignment.CENTER).SetFontSize(15);
                     Paragraph dl = new Paragraph(".       .").SetTextAlignment(TextAlignment.CENTER).SetFontSize(8).SetFontColor(ColorConstants.WHITE);
                     LineSeparator ls = new LineSeparator(new SolidLine());
                     document.Add(header);
