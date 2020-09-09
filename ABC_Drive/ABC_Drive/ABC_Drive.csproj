@@ -101,6 +101,12 @@
       <DependentUpon>frmLongHireEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Hire\LongTourHireCalculation.cs" />
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202009021844470_Create_db.cs" />
     <Compile Include="Migrations\202009021844470_Create_db.designer.cs">
       <DependentUpon>202009021844470_Create_db.cs</DependentUpon>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hire\frmLongHireEdit.resx">
       <DependentUpon>frmLongHireEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009021844470_Create_db.resx">
       <DependentUpon>202009021844470_Create_db.cs</DependentUpon>
