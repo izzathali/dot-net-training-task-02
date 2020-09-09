@@ -180,5 +180,38 @@ namespace ABC_Drive.UserControlls
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (RentDbContext db = new RentDbContext())
+                {
+                    var LongHire = (from Hire in db.LongHires
+                                   select new
+                                   {
+                                       HireId = Hire.HireId,
+                                       Vehicle = Hire.Packages.Vehicle.VehicleNo,
+                                       Package = Hire.Packages.PackageName,
+                                       StartDate = Hire.StartDate,
+                                       EndDate = Hire.EndDate,
+                                       StartKm = Hire.StartKm,
+                                       EndKm = Hire.EndKm,
+                                       Driver = Hire.Driver.DriverName,
+                                       TotalDriverCharge = Hire.TotDriverCharge,
+                                       PackageCharge = Hire.HireCharge,
+                                       OverNightStayCharge = Hire.OvernightStayCharge,
+                                       ExtraKmCharge = Hire.ExtraKmCharge,
+                                       TotalHireCharge = Hire.TotalHireCharge
+                                   }).ToList();
+                    DataTable LongHires = LongTourHireCalculation.ToDataTable(LongHire);
+                    LongTourHireCalculation.ExportLongHires(LongHires);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

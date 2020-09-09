@@ -175,5 +175,37 @@ namespace ABC_Drive.UserControlls
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DayTourHireCalculation cal = new DayTourHireCalculation();
+                using (RentDbContext db = new RentDbContext())
+                {
+                    var DayHire = (from Hire in db.DayHires
+                                  select new
+                                  {
+                                      HireId = Hire.HireId,
+                                      Vehicle = Hire.Packages.Vehicle.VehicleNo,
+                                      Package = Hire.Packages.PackageName,
+                                      StartTime = Hire.StartTime,
+                                      EndTime = Hire.EndTime,
+                                      StartKm = Hire.StartKm,
+                                      EndKm = Hire.EndKm,
+                                      PackageCharge = Hire.HireCharge,
+                                      WaitingCharge = Hire.WaitingCharge,
+                                      ExtraKmCharge = Hire.ExtraKmCharge,
+                                      TotalHireCharge = Hire.TotalHireCharge
+                                  }).ToList();
+                    DataTable DayHires = DayTourHireCalculation.ToDataTable(DayHire);
+                    DayTourHireCalculation.ExportDayHires(DayHires);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

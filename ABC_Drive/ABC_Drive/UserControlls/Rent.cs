@@ -15,6 +15,7 @@ namespace ABC_Drive.UserControlls
 {
     public partial class Rent : UserControl
     {
+        BindingSource bs = new BindingSource();
         public Rent()
         {
             InitializeComponent();
@@ -180,5 +181,38 @@ namespace ABC_Drive.UserControlls
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnRentReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RentCalculation cal = new RentCalculation();
+                using (RentDbContext db = new RentDbContext())
+                {
+                    var rent = (from Rent in db.Rents
+                               select new
+                               {
+                                   RentId = Rent.RentId,
+                                   Vehicle = Rent.Vehicle.VehicleNo,
+                                   RentedDate = Rent.RentedDate,
+                                   ReturnedDate = Rent.ReturnedDate,
+                                   Driver = Rent.Driver.DriverName,
+                                   TotalDays = Rent.TotDays,
+                                   TotalDriver = Rent.TotDriverCost,
+                                   TotalDaysAmount = Rent.TotDaysAmnt,
+                                   TotalWeeksAmount = Rent.TotWeeksAmnt,
+                                   TotalMonthsAmount = Rent.TotMonthsAmnt,
+                                   TotalRent = Rent.TotalRent
+                               }).ToList();
+                    DataTable rents = RentCalculation.ToDataTable(rent);
+                    RentCalculation.ExportRents(rents);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }
