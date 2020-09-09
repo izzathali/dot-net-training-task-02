@@ -186,7 +186,6 @@ namespace ABC_Drive.UserControlls
         {
             try
             {
-                BindingSource bs = new BindingSource();
                 RentCalculation cal = new RentCalculation();
                 using (RentDbContext db = new RentDbContext())
                 {
@@ -206,7 +205,7 @@ namespace ABC_Drive.UserControlls
                                    TotalRent = Rent.TotalRent
                                }).ToList();
                     DataTable rents = RentCalculation.ToDataTable(rent);
-                    RentCalculation.ExportPurchaseOrders(rents);
+                    RentCalculation.ExportRents(rents);
                 }
             }
             catch (Exception ex)
