@@ -181,7 +181,7 @@ namespace ABC_Drive.Rent
             }
             return dataTable;
         }
-        public static void ExportPurchaseOrders(DataTable dt)
+        public static void ExportRents(DataTable dt)
         {
             try
             {
