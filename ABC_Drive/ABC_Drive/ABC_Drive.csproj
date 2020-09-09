@@ -127,6 +127,7 @@
     <Compile Include="DataModel\LongHire.cs" />
     <Compile Include="DataModel\Package.cs" />
     <Compile Include="DataModel\Rent.cs" />
+    <Compile Include="DataModel\User.cs" />
     <Compile Include="Driver\frmDriver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +162,13 @@
       <DependentUpon>frmLongHireEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Hire\LongTourHireCalculation.cs" />
+    <Compile Include="login\frmlogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login\frmlogin.Designer.cs">
+      <DependentUpon>frmlogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login\Login.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +186,10 @@
     <Compile Include="Migrations\202009050617393_UpdateLongHire.cs" />
     <Compile Include="Migrations\202009050617393_UpdateLongHire.designer.cs">
       <DependentUpon>202009050617393_UpdateLongHire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009091831042_CreateUser.cs" />
+    <Compile Include="Migrations\202009091831042_CreateUser.designer.cs">
+      <DependentUpon>202009091831042_CreateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Package\frmPackage.cs">
@@ -249,6 +261,9 @@
     <EmbeddedResource Include="Hire\frmLongHireEdit.resx">
       <DependentUpon>frmLongHireEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="login\frmlogin.resx">
+      <DependentUpon>frmlogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009050617393_UpdateLongHire.resx">
       <DependentUpon>202009050617393_UpdateLongHire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009091831042_CreateUser.resx">
+      <DependentUpon>202009091831042_CreateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Package\frmPackage.resx">
       <DependentUpon>frmPackage.cs</DependentUpon>

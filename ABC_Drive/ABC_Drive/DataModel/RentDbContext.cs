@@ -1,4 +1,5 @@
 ﻿
+using ABC_Drive.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,5 +17,6 @@ namespace ABC_Drive.Model
         public DbSet<Package> Packages { get; set; }
         public DbSet<DayHire> DayHires { get; set; }
         public DbSet<LongHire> LongHires { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
