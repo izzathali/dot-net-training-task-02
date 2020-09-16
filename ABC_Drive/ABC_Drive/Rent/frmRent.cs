@@ -249,7 +249,7 @@ namespace ABC_Drive.Rent
             Model.Rent model = new Model.Rent()
             {
                 VehicleId = VehicleID,
-                RentedDate = Convert.ToDateTime(dtpRentedDate.Value.ToShortDateString()),
+                RentedDate = dtpRentedDate.Value,
                 ReturnedDate = dtpReturnedDate.Value,
                 Driver = (Model.Driver)cmbLoadDriver.SelectedItem,
                 TotDays = Convert.ToInt32(lblTotDays.Text),
