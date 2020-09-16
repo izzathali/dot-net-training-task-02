@@ -61,5 +61,10 @@ namespace ABC_Drive.Dashboard
         {
 
         }
+
+        private void frmDashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
